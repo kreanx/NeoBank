@@ -1,17 +1,113 @@
 /* 1300, 920, 500 */
 
-@media (max-width: 500px) {
+@media (max-width: 1300px) {
     .container {
         max-width: 1100px;
+        padding: 0 30px;
     }
+
+    .button {
+        /* font-size: var(--fz_nav_m13); */
+        padding: 14px;
+    }
+
+    .header__links-link {
+        /* font-size: var(--fz_nav_m13); */
+    }
+
+    .cards {
+        margin-top: 100px;
+    }
+
+    .cards__wrapper {
+        gap: 80px;
+    }
+
+    .cards__block {
+        width: 50%;
+    }
+
+    .cards__title {
+        font-size: var(--fz_48_m13);
+        line-height: var(--lh_50_m13);
+    }
+
+    .features {
+        margin-top: 80px;
+    }
+
+    .features__list {
+        gap: 8px;
+    }
+
+    .features__list-item {
+        font-size: var(--fz_14_m13);
+        line-height: var(--lh_30_m13);
+    }
+
+    .features__title {
+        font-size: var(--fz_35_m13);
+        line-height: var(--lh_50_m13);
+    }
+
+    .features__subtitle {
+        font-size: var(--fz_16_m13);
+        line-height: var(--lh_30_13);
+    }
+
+    .exchange__subtitle {
+        margin-top: 18px;
+    }
+
+    .exchange__currency {
+        margin-top: 26px;
+    }
+
+    .exchange__link {
+        margin-top: 40px;
+    }
+
+    .exchange__title {
+        font-size: var(--fz_30_m13);
+        line-height: var(--lh_50_m13);
+    }
+
+    .exchange__subtitle {
+        font-size: var(--fz_20_m13);
+        line-height: var(--lh_50_m13);
+    }
+
+    .exchange__currency-text,
+    .exchange__currency-amount {
+        font-size: var(--fz_20_m13);
+        line-height: var(--lh_112);
+    }
+
+    .exchange__block:nth-child(2) {
+        width: 55%;
+    }
+
+    .exchange__update {
+        font-size: var(--fz_16_m13);
+        line-height: var(--lh_50_m13);
+    }
+
+    .map__title {
+        font-size: var(--fz_30_m13);
+        line-height: var(--lh_50_m13);
+    }
+
+    .map__subtitle {
+        font-size: var(--fz_16_m13);
+        line-height: var(--lh_50_m13);
+    }
+
 
 
 }
 
+
 @media (max-width: 920px) {
-    .container {
-        max-width: 800px;
-    }
 
     #burger__toggle {
         display: block;
@@ -36,20 +132,111 @@
     .header__links {
         display: none;
     }
+
+    .cards {
+        margin-top: 50px;
+    }
+
+    .cards__wrapper {
+        gap: 40px;
+    }
+
+    .cards__block:nth-child(2) {
+        grid-template-columns: 1fr;
+    }
+
+    .cards__button {
+        margin-top: 20px;
+    }
+
+    .cards__title {
+        font-size: var(--fz_48_m92);
+        line-height: var(--lh_50_m92);
+    }
+
+    .features__title {
+        font-size: var(--fz_35_m92);
+        line-height: var(--lh_50_m92);
+    }
+
+    .features__wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .features__textblock {
+        margin: 0;
+    }
+
+    .exchange__img {
+        max-width: 90px;
+    }
+
+    .exchange__currency {
+        gap: 20px;
+    }
+
+    .exchange__title {
+        font-size: var(--fz_30_m92);
+        line-height: var(--lh_50_m92);
+    }
+
+    .exchange__subtitle {
+        font-size: var(--fz_20_m92);
+        line-height: var(--lh_50_m92);
+    }
+
+
+    .exchange__currency-text {
+        font-size: var(--fz_20_m92);
+        line-height: var(--lh_112_m92);
+    }
+
+    .exchange__currency-amount {
+        font-size: var(--fz_20_m92);
+        line-height: var(--lh_112_m92);
+    }
+
+    .exchange__link {
+        font-size: var(--fz_20_m92);
+        line-height: var(--lh_112_m92);
+    }
+
+    .map__title {
+        font-size: var(--fz_30_m92);
+        line-height: var(--lh_50_m92);
+    }
+    
+    .map__subtitle {
+        font-size: var(--fz_16_m92);
+        line-height: var(--lh_50_m92);
+    }
+    
+
 }
 
-@media (max-width: 1300px) {
-    .container {
-        max-width: 1100px;
-        padding: 0 20px;
+@media (max-width: 500px) {
+    .cards__wrapper {
+        flex-direction: column;
+        gap: 40px;
     }
 
-    .button {
-        /* font-size: var(--fz_nav_m13); */
-        padding: 14px;
+    .cards__block {
+        width: 100%;
     }
 
-    .header__links-link {
-        /* font-size: var(--fz_nav_m13); */
+    .cards__block-card {
+        justify-self: center;
     }
+
+    .cards__block:nth-child(2) {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .exchange__wrapper {
+        padding: 15px;
+        gap: 15px;
+    }
+
 }
