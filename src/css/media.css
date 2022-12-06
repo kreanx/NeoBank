@@ -7,12 +7,7 @@
     }
 
     .button {
-        /* font-size: var(--fz_nav_m13); */
         padding: 14px;
-    }
-
-    .header__links-link {
-        /* font-size: var(--fz_nav_m13); */
     }
 
     .cards {
@@ -102,8 +97,33 @@
         line-height: var(--lh_50_m13);
     }
 
+    .support__title {
+        font-size: var(--fz_24_m13);
+    }
+    
+    .support__subtitle {
+        font-size: var(--fz_30_m13);
+    }
+    
+    .support__info {
+        font-size: var(--fz_30_m13);
+    }
 
+    .footer__number {
+        font-size: var(--fz_30_m13);
+    }
+    
+    .footer__email {
+        font-size: var(--fz_16_m13);
+    }
 
+    .footer__tags-item {
+        font-size: var(--fz_16_m13);
+    }
+    
+    .footer__cookies {
+        font-size: var(--fz_16_m13);
+    }
 }
 
 
@@ -212,8 +232,58 @@
         font-size: var(--fz_16_m92);
         line-height: var(--lh_50_m92);
     }
-    
 
+    .support__title {
+        font-size: var(--fz_24_m92);
+    }
+    
+    .support__subtitle {
+        font-size: var(--fz_30_m92);
+        margin-top: 25px;
+    }
+    
+    .support__info {
+        font-size: var(--fz_30_m92);
+        margin-top: 20px;
+    }
+
+    .support__input {
+        margin-top: 45px;
+    }
+
+    .footer__number {
+        font-size: var(--fz_30_m92);
+    }
+    
+    .footer__email {
+        font-size: var(--fz_16_m92);
+    }
+
+    .footer__top {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer__wrapper {
+        padding: 44px 0;
+    }
+
+    .footer__tags {
+        margin-top: 35px;
+        column-gap: 20px;
+    }
+
+    .footer__cookies {
+        margin-top: 40px;
+    }
+
+    .footer__tags-item {
+        font-size: var(--fz_16_m500);
+    }
+    
+    .footer__cookies {
+        font-size: var(--fz_16_m500);
+    }
 }
 
 @media (max-width: 500px) {
@@ -239,4 +309,47 @@
         gap: 15px;
     }
 
+    .support__title {
+        font-size: var(--fz_24_m500);
+    }
+    
+    .support__subtitle {
+        font-size: var(--fz_30_m500);
+        margin-top: 25px;
+    }
+    
+    .support__info {
+        font-size: var(--fz_30_m500);
+        margin-top: 20px;
+    }
+
+    .support__input {
+        padding: 12px 22px;
+
+    }
+
+    .support__button {
+        padding: 0 3px 0 7px;
+        border-radius: 50%;
+    }
+
+    .support__button-text {
+        display: none;
+    }
+
+    .footer__number {
+        font-size: var(--fz_30_m500);
+    }
+    
+    .footer__email {
+        font-size: var(--fz_16_m500);
+    }
+
+    .footer__tags {
+        margin-top: 20px;
+    }
+
+    .footer__cookies {
+        margin-top: 30px;
+    }
 }
