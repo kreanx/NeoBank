@@ -18,6 +18,7 @@
     --features_black: #0B132A;
     --orange: #EB801D;
     --bgcolor: #F5F4FF;
+    --logo: #B4387A;
 
     /* text */
 
@@ -115,7 +116,11 @@ body {
 }
 
 .header__logo {
-    cursor: pointer;
+    text-decoration: none;
+    font-weight: var(--fw_700);
+    font-size: var(--fz_24);
+    line-height: var(--lh_112);
+    color: var(--logo);
 }
 
 .header__nav {
@@ -138,6 +143,24 @@ body {
     color: var(--black_navbar);
     cursor: pointer;
     list-style: none;
+    position: relative;
+}
+
+.header__links-link::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: var(--logo);
+    width: 0;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+}
+
+
+.header__links-link:hover::after {
+    width: 100%;
 }
 
 #burger__toggle {
@@ -297,7 +320,6 @@ body {
 
 .features__title {
     margin: 0;
-    font-family: 'Rubik';
     font-weight: var(--fw_500);
     font-size: var(--fz_35);
     line-height: var(--lh_50);
@@ -306,7 +328,6 @@ body {
 
 .features__subtitle {
     margin: 20px 0 0;
-    font-family: 'Rubik';
     font-weight: var(--fw_400);
     font-size: var(--fz_16);
     line-height: var(--lh_30);
@@ -323,7 +344,6 @@ body {
 }
 
 .features__list-item {
-    font-family: 'Rubik';
     font-weight: var(--fw_400);
     font-size: var(--fz_14);
     line-height: var(--lh_30);
@@ -506,7 +526,6 @@ body {
 
 .support__input-input {
     border: 0;
-    font-family: 'Nunito Sans';
     padding: 10px;
     outline: none;
     color: var(--grey_input);
@@ -572,6 +591,11 @@ body {
     text-decoration: none;
     font-weight: var(--fw_700);
     font-size: var(--fz_30);
+    transition: 0.2s ease-in-out all;
+}
+
+.footer__number:hover {
+    color: var(--logo);
 }
 
 .footer__email {
@@ -579,6 +603,11 @@ body {
     font-size: var(--fz_16);
     color: var(--grey_light);
     text-decoration: none;
+    transition: 0.2s ease-in-out all;
+}
+
+.footer__email:hover {
+    color: var(--logo);
 }
 
 .footer__tags {
@@ -596,7 +625,25 @@ body {
     font-size: var(--fz_16);
     color: var(--black_exchange);
     cursor: pointer;
+    position: relative;
 }
+
+.footer__tags-item::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: var(--logo);
+    width: 0;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+}
+
+.footer__tags-item:hover::after {
+    width: 100%;
+}
+
 
 .footer__cookies {
     margin: 64px 0 0;

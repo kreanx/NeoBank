@@ -129,6 +129,11 @@
 
 @media (max-width: 920px) {
 
+    .header__logo {
+        font-size: var(--fz_24_m92);
+        line-height: var(--lh_112_m92);
+    }
+
     #burger__toggle {
         display: block;
     }
