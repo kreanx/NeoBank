@@ -113,6 +113,12 @@ body {
     padding: 16px;
     color: var(--white);
     cursor: pointer;
+    transition: 0.2s ease-in-out all;
+}
+
+.button:hover {
+    background-color: var(--blue_dark);
+    border-color: var(--blue_dark);
 }
 
 .header__logo {
@@ -513,6 +519,10 @@ body {
     color: var(--black_subtitle);
 }
 
+.support__button:hover .support__button-text {
+    transform: scale(1.05);
+}
+
 .support__input {
     margin-top: 62px;
     background: var(--white);
@@ -554,6 +564,7 @@ body {
     font-weight: var(--fw_700);
     font-size: var(--fz_16);
     color: var(--white);
+    transition: 0.2s ease-in-out all;
 }
 
 .footer {
@@ -646,8 +657,14 @@ body {
 
 
 .footer__cookies {
-    margin: 64px 0 0;
+    margin: 32px 0 0;
     font-weight: var(--fw_500);
     font-size: var(--fz_16);
     color: var(--grey_light);
+}
+
+.footer__line {
+    margin-top: 28px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.81);
 }
