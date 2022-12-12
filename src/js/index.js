@@ -233,11 +233,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     loadNews()
 
-    // const newsIntervalTime = 900000
+    const newsIntervalTime = 900000
 
-    // setInterval(() => {
-    //     loadNews()
-    // }, newsIntervalTime)
+    setInterval(() => {
+        loadNews()
+    }, newsIntervalTime)
 
     const images = document.querySelectorAll('.news__img')
 
