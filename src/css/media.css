@@ -133,12 +133,18 @@
         height: 350px;
 
     }
+
     .news__item-title {
         font-size: var(--fz_20_m13);
         margin-top: 28px;
     }
+
     .news__item-text {
         margin-top: 28px;
+    }
+
+    .news__item-link,
+    .news__item-message {
         font-size: var(--fz_16_m13);
     }
 }
@@ -291,6 +297,10 @@
         width: 220px;
     }
 
+    .news__link {
+        max-width: 260px;
+    }
+
     .news__title {
         font-size: var(--fz_30_m92);
         line-height: var(--lh_50_m92);
@@ -314,8 +324,13 @@
         font-size: var(--fz_20_m92);
         margin-top: 20px;
     }
+
     .news__item-text {
-        margin-top: 20px;
+        margin-top: 12px;
+    }
+
+    .news__item-link,
+    .news__item-message {
         font-size: var(--fz_16_m92);
     }
 }

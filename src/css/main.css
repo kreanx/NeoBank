@@ -709,6 +709,10 @@ body {
     color: var(--black_exchange);
 }
 
+.news__link {
+    max-width: 320px;
+}
+
 .news__subtitle {
     margin: 8px 0 0;
     text-align: center;
@@ -759,12 +763,24 @@ body {
     overflow: hidden;
 }
 
-.news_item-link {
+.news__item-link {
     cursor: pointer;
     text-decoration: underline;
     font-weight: var(--fw_500);
     font-size: var(--fz_16);
     color: var(--black_exchange);
+}
+
+.news__item-message,
+.news__item-link {
+    cursor: pointer;
+    font-weight: var(--fw_500);
+    font-size: var(--fz_16);
+    color: var(--black_exchange);
+}
+
+.news__item-link {
+    text-decoration: underline;
 }
 
 .news__item-text {
