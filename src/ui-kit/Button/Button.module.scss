@@ -1,0 +1,29 @@
+.button {
+    font-weight: var(--fw_700);
+    font-size: var(--fz_16);
+    line-height: var(--lh_112);
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    background-color: var(--blue_light);
+    border-color: var(--blue_light);
+    border-radius: 16px;
+    padding: 16px;
+    color: var(--white);
+    cursor: pointer;
+    transition: 0.2s ease-in-out all;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: var(--btn_disabled);
+        border: var(--btn_disabled);
+        outline: none;
+
+        &:hover {
+            transform: scale(1);
+        }
+    }
+}

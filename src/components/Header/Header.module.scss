@@ -1,0 +1,182 @@
+@import '../../global/global.scss';
+
+.header {
+    &__logo {
+        text-decoration: none;
+        font-weight: var(--fw_700);
+        font-size: var(--fz_24);
+        line-height: var(--lh_112);
+        color: var(--logo);
+
+        @include smallDesktop {
+            font-size: var(--fz_24_m92);
+            line-height: var(--lh_112_m92);
+        }
+
+    }
+
+    &__button {
+        @include smallDesktop {
+            display: none;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 0;
+
+        @include smallDesktop {
+            padding: 21px 0;
+        }
+    }
+
+    &__links {
+        display: flex;
+        gap: 40px;
+
+        @include smallDesktop {
+            display: none;
+        }
+
+        &_link {
+            font-weight: var(--fw_700);
+            font-size: var(--fz_16);
+            line-height: var(--lh_112);
+            letter-spacing: 0.02em;
+            color: var(--black_navbar);
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                height: 2px;
+                background-color: var(--logo);
+                width: 0;
+                left: 50%;
+                bottom: -5px;
+                transform: translateX(-50%);
+                transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+            }
+
+            &:hover {
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+.header__links-link:hover::after {
+    width: 100%;
+}
+
+.burger__toggle {
+    opacity: 0;
+    display: none;
+
+    @include smallDesktop {
+        display: block;
+    }
+}
+
+.burger__toggle:checked+.burger__btn>span {
+    transform: rotate(45deg);
+}
+
+.burger__toggle:checked+.burger__btn>span::before {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+.burger__toggle:checked+.burger__btn>span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.burger__toggle:checked~.burger__box {
+    right: 0 !important;
+}
+
+.burger__btn {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+
+    @include smallDesktop {
+        display: block;
+    }
+}
+
+.burger__btn>span,
+.burger__btn>span::before,
+.burger__btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: .25s;
+}
+
+.burger__btn>span::before {
+    content: '';
+    top: -8px;
+}
+
+.burger__btn>span::after {
+    content: '';
+    top: 8px;
+}
+
+.burger__box {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #ECEFF1;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+    z-index: 10;
+
+    @include smallDesktop {
+        display: block;
+    }
+}
+
+.burger__box li:last-child a {
+    color: var(--white);
+}
+
+.burger__box li:last-child {
+    padding: 20px;
+}
+
+.burger__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+
+    &:hover {
+        background-color: #CFD8DC;
+    }
+}

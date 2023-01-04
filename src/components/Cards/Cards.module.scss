@@ -1,0 +1,97 @@
+@import '../../global/global.scss';
+
+.cards {
+    margin-top: 132px;
+
+    @include desktop {
+        margin-top: 100px;
+    }
+
+    @include smallDesktop {
+        margin-top: 50px;
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 160px;
+
+        @include desktop {
+            gap: 80px;
+        }
+
+        @include smallDesktop {
+            gap: 40px;
+        }
+
+        @include tablet {
+            flex-direction: column;
+            gap: 40px;
+        }
+
+    }
+
+    &__block {
+        width: 40%;
+
+        @include desktop {
+            width: 50%;
+        }
+
+        @include tablet {
+            width: 100%;
+        }
+
+        &_card {
+            justify-self: flex-end;
+    
+            @include tablet {
+                justify-self: center;
+            }
+    
+            img {
+                max-width: 100%;
+            }
+        }
+
+        &:nth-child(2) {
+            display: grid;
+            grid-template-columns: minmax(10%, 250px) minmax(10%, 250px);
+            gap: 16px;
+    
+            @include smallDesktop {
+                grid-template-columns: 1fr;
+            }
+    
+            @include tablet {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    }
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_48);
+        line-height: var(--lh_50);
+        color: var(--black_subtitle);
+        margin: 0;
+
+        @include desktop {
+            font-size: var(--fz_48_m13);
+            line-height: var(--lh_50_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_48_m92);
+            line-height: var(--lh_50_m92);
+        }
+    }
+
+    &__button {
+        margin-top: 36px;
+
+        @include smallDesktop {
+            margin-top: 20px;
+        }
+    }
+}
