@@ -49,7 +49,7 @@ const News: React.FC = () => {
 
 	const fetchNews: () => Promise<Response> = async () => {
 		const data = await fetch(
-			'https://ewsapi.org/v2/top-headlines?country=us&category=business&apiKey=b8e220bebe8e422fa69d8f4844730fec'
+			'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b8e220bebe8e422fa69d8f4844730fec'
 		)
 		return data
 	}
