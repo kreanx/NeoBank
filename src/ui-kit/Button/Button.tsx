@@ -7,9 +7,14 @@ const Button: React.FC<TButton> = ({
 	disabled,
 	customStyle,
 	children,
+	type,
 }) => {
 	return (
-		<button disabled={disabled} className={clsx(styles.button, customStyle)}>
+		<button
+			type={type}
+			disabled={disabled}
+			className={clsx(styles.button, customStyle)}
+		>
 			{children}
 			<span className={styles.button__text}>{label}</span>
 		</button>

@@ -1,4 +1,4 @@
-interface TItem {
+export interface TItem {
 	img: string
 	title: string
 	url: string

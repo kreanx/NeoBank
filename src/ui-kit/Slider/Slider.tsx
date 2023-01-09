@@ -2,6 +2,7 @@ import styles from './Slider.module.scss'
 import { useEffect, useState, useRef } from 'react'
 import SliderArrow from 'ui-kit/SliderArrow/SliderArrow'
 import { TSlider } from './types'
+import SliderItem from 'ui-kit/SliderItem/SliderItem'
 
 const Slider: React.FC<TSlider> = ({ items, mockImg }) => {
 	const wrapperRef = useRef(null)
@@ -85,7 +86,7 @@ const Slider: React.FC<TSlider> = ({ items, mockImg }) => {
 				<h4 className={styles.news__item_title}>{'item.title'}</h4>
 				<p className={styles.news__item_text}>
 					<a
-						className={'news__item_link'}
+						className={styles.news__item_link}
 						href={'item.url'}
 						target="_blank"
 						rel="noreferrer"
@@ -104,29 +105,12 @@ const Slider: React.FC<TSlider> = ({ items, mockImg }) => {
 				<div className={styles.news__items} ref={wrapperRef}>
 					{items.map((item, i) => {
 						return (
-							<div className={styles.news__link} key={i}>
-								<div className={styles.news__item}>
-									<div className={styles.news__item_img}>
-										<img
-											className={styles.news__img}
-											alt="newsImg"
-											src={item.img}
-											onError={handleImgError}
-										></img>
-									</div>
-									<h4 className={styles.news__item_title}>{item.title}</h4>
-									<p className={styles.news__item_text}>
-										<a
-											className={styles.news__item_link}
-											href={item.url}
-											target="_blank"
-											rel="noreferrer"
-										>
-											{item.description}
-										</a>
-									</p>
-								</div>
-							</div>
+							<SliderItem
+								key={i}
+								handleImgError={handleImgError}
+								i={i}
+								item={item}
+							/>
 						)
 					})}
 				</div>

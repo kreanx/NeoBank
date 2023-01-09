@@ -4,4 +4,5 @@ export interface TButton {
 	disabled?: boolean
 	customStyle?: string
 	children?: React.ReactNode
+	type?: 'button' | 'submit' | 'reset'
 }

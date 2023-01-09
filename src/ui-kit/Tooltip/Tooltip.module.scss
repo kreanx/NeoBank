@@ -1,0 +1,32 @@
+@import '../../global/global.scss';
+
+.tooltip {
+    &__label {
+        font-size: var(--fz_16);
+        line-height: var(--lh_112);
+        letter-spacing: 0.02em;
+        color: var(--digital_grey);
+        position: relative;
+        cursor: pointer;
+
+        &_content {
+            padding: 8px 15px 8px 8px;
+            color: var(--white);
+            background-color: var(--digital_grey);
+            position: absolute;
+            opacity: 0;
+            top: 20px;
+            left: -40px;
+            width: 150%;
+            display: none;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_12);
+            letter-spacing: 0.02em;
+        }
+    }
+}
+
+.active {
+    opacity: 1;
+    display: block;
+}

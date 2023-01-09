@@ -1,0 +1,141 @@
+@import '../../global/global.scss';
+
+.digital {
+    margin-top: 20px;
+
+    &__anchor {
+        text-decoration: none;
+    }
+
+    &__wrapper {
+        background: linear-gradient(180.8deg, rgba(203, 213, 224, 0.624) 34.33%, rgba(254, 235, 200, 0.56) 64.27%);
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 28.8px;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 48px 100px 32px;
+
+        @include desktop {
+            padding: 38px 80px 30px;
+        }
+
+        @include smallDesktop {
+            padding: 28px 60px 30px;
+            flex-direction: column;
+        }
+        @include tablet {
+            padding: 20px 30px 28px;
+            flex-direction: column;
+        }
+    }
+
+    &__block {
+        &:first-child {
+            width: 60%;
+
+            @include smallDesktop {
+                width: 100%;
+            }
+
+        }
+    }
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_48);
+        letter-spacing: 0.02em;
+        color: var(--white);
+
+        @include desktop {
+            font-size: var(--fz_48_m13);
+        }
+
+    }
+
+    &__subtitle {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: var(--lh_112);
+        letter-spacing: 0.02em;
+        color: var(--grey_light);
+        margin-top: 48px;
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+
+        @include smallDesktop {
+            margin-top: 28px;
+        }
+    }
+
+    &__benefits {
+        display: flex;
+        gap: 80px;
+        margin-top: 32px;
+
+        @include smallDesktop {
+            gap: 60px;
+        }
+
+        @include tablet {
+            gap: 20px;
+
+        }
+    }
+
+    &__btn {
+        margin-top: 32px;
+    }
+
+    &__benefit {
+        &_title {
+            font-weight: var(--fw_700);
+            font-size: var(--fz_20);
+            line-height: var(--lh_112);
+            letter-spacing: 0.02em;
+            color: var(--digital_grey);
+
+            @include desktop {
+                font-size: var(--fz_20_m13);
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_20_m92);
+            }
+        }
+
+        &_subtitle {
+            margin-top: 8px;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_16);
+            line-height: var(--lh_112);
+            letter-spacing: 0.02em;
+
+            @include desktop {
+                font-size: var(--fz_16_m13);
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_16_m92);
+            }
+        }
+    }
+
+    &__img {
+        margin-top: 30px;
+
+        img {
+            transform: rotate(10deg);
+
+            @include desktop {
+                max-width: 300px;
+            }
+
+            @include tablet {
+                max-width: 200px;
+            }
+        }
+    }
+}

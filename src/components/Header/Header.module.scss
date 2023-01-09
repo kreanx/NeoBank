@@ -50,6 +50,11 @@
             list-style: none;
             position: relative;
 
+            a {
+                color: var(--black_navbar);
+
+            }
+
             &::after {
                 content: "";
                 position: absolute;
@@ -178,5 +183,19 @@
 
     &:hover {
         background-color: #CFD8DC;
+    }
+}
+
+.active {
+    &::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        background-color: var(--logo);
+        width: 100%;
+        left: 50%;
+        bottom: -5px;
+        transform: translateX(-50%);
+        transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
     }
 }

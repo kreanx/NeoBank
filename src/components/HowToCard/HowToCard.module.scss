@@ -1,0 +1,101 @@
+@import '../../global/global.scss';
+
+.howto {
+    margin-top: 50px;
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_30);
+        line-height: 147.4%;
+        text-align: center;
+        color: var(--black_exchange);
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__blocks {
+        display: flex;
+        gap: 120px;
+        margin-top: 14px;
+
+        @include smallDesktop {
+            gap: 50px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        max-width: 33%;
+
+
+        @include smallDesktop {
+            max-width: 100%;
+        }
+
+        &_top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 36px;
+        }
+
+        &_content {
+            text-align: center;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_16);
+            line-height: 147.4%;
+            color: var(--black_exchange);
+
+            @include smallDesktop {
+                font-size: var(--fz_16_m92);
+            }
+
+        }
+    }
+
+    &__divider {
+        width: 100%;
+        height: 2px;
+        background: rgba(128, 128, 128, 0.2);
+    }
+
+    &__text {
+        margin-top: 20px;
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: 147.4%;
+        color: var(--black_exchange);
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+        }
+
+    }
+
+    &__count {
+        background: var(--howto);
+        border-radius: 50%;
+        width: 60px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: var(--fw_700);
+        font-size: var(--fz_20);
+        line-height: 147.4%;
+        color: var(--black_exchange);
+    }
+
+}

@@ -1,0 +1,99 @@
+@import '../../global/global.scss';
+
+.news {
+    margin-top: 45px;
+
+    &__link {
+        max-width: 320px;
+
+        @include smallDesktop {
+            max-width: 260px;
+        }
+    }
+
+    &__item {
+        padding: 32px;
+        background: var(--white);
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 28px;
+        height: 390px;
+
+        @include desktop {
+            padding: 28px;
+            height: 350px;
+        }
+
+        @include smallDesktop {
+            padding: 20px;
+            height: 300px;
+        }
+
+        &_title {
+            text-align: center;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_20);
+            color: var(--black_exchange);
+            margin: 32px 0 0;
+            max-height: 105px;
+            overflow: hidden;
+
+            @include desktop {
+                font-size: var(--fz_20_m13);
+                margin-top: 28px;
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_20_m92);
+                margin-top: 20px;
+            }
+        }
+
+        &_img {
+            width: 256px;
+            height: 120px;
+            overflow: hidden;
+
+            @include smallDesktop {
+                width: 220px;
+            }
+        }
+
+        &_link {
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_16);
+            color: var(--black_exchange);
+
+            @include desktop {
+                font-size: var(--fz_16_m13);
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_16_m92);
+            }
+        }
+
+        &_text {
+            text-align: center;
+            margin: 32px 0 0;
+            max-height: 100px;
+            overflow: hidden;
+
+            @include desktop {
+                margin-top: 28px;
+            }
+
+            @include smallDesktop {
+                margin-top: 12px;
+            }
+        }
+    }
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

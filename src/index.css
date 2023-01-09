@@ -18,9 +18,22 @@
   --orange: #EB801D;
   --bgcolor: #F5F4FF;
   --logo: #B4387A;
+  --digital_grey: #3D3D3D;
+  --tabs_items: #7B7454;
+  --tabs_bg: #EAECEE;
+  --tabs_rates: #434343;
+  --howto: #D9D9D9;
+  --orange_form: #FF5631;
+  --grey_form: #1A202C;
+  --blue_form: #5B35D5;
+  --yellow_form: #F9F5E3;
+  --black_form: #1A202C;
+  --red_form: #FF0000;
+  --purple_form: #5B35D5;
+
 
   /* text */
-
+  --fz_12: 12px;
   --fz_14: 14px;
   --fz_16: 16px;
   --fz_20: 20px;
@@ -84,11 +97,16 @@
   font-family: 'Ubuntu';
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bgcolor);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
 }
 
 .container {

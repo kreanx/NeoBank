@@ -1,0 +1,58 @@
+@import '../../global/global.scss';
+
+.cashback {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+
+    @include smallDesktop {
+        gap: 20px;
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 32px;
+        background: #EAECEE;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 28px;
+
+        &:nth-child(2n) {
+            background: rgba(136, 179, 184, 0.6);
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @include smallDesktop {
+            gap: 20px;
+            padding: 20px;
+        }
+        @include tablet {
+            gap: 10px;
+            padding: 15px;
+        }
+    }
+
+    &__title {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        color: rgba(67, 67, 67, 0.9);
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+        }
+    }
+
+    &__text {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_35);
+        line-height: 147.4%;
+        color: var(--black_exchange);
+
+        @include smallDesktop {
+            font-size: var(--fz_35_m92);
+        }
+    }
+
+}

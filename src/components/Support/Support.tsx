@@ -39,7 +39,7 @@ const Support: React.FC = () => {
 			})
 	}
 
-	const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(e.target.value)
 	}
 
@@ -60,7 +60,7 @@ const Support: React.FC = () => {
 									type="email"
 									className={styles.support__input_input}
 									placeholder="Your email"
-									onInput={inputHandler}
+									onInput={emailHandler}
 									value={value}
 								/>
 								<button className={styles.support__button} type="submit">
@@ -74,7 +74,7 @@ const Support: React.FC = () => {
 							</>
 						) : (
 							<span className={styles.support__subscribed}>
-								You are already subscribed!
+								You are already subscribed to the banks newsletter
 							</span>
 						)}
 					</form>

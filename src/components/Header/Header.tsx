@@ -1,17 +1,27 @@
 import { Button } from '../../ui-kit/Button/Button'
 import Container from '../Container/Container'
 import styles from './Header.module.scss'
+import { Link, NavLink } from 'react-router-dom'
 
 const Header: React.FC = () => {
 	return (
 		<header className={styles.header}>
 			<Container>
 				<nav className={styles.header__nav}>
-					<a className={styles.header__logo} href="/">
-						NeoBank
-					</a>
+					<Link to={'/'}>
+						<div className={styles.header__logo}>NeoBank</div>
+					</Link>
 					<ul className={styles.header__links}>
-						<li className={styles.header__links_link}>Credit card</li>
+						<li className={styles.header__links_link}>
+							<NavLink
+								to="/loan"
+								className={({ isActive }) =>
+									isActive ? styles.active : undefined
+								}
+							>
+								Credit card
+							</NavLink>
+						</li>
 						<li className={styles.header__links_link}>Product</li>
 						<li className={styles.header__links_link}>Account</li>
 						<li className={styles.header__links_link}>Resources</li>
