@@ -1,5 +1,5 @@
-interface TLoader {
+interface ILoader {
 	fullsize?: boolean
 }
 
-export default TLoader
+export default ILoader

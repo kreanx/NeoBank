@@ -1,4 +1,4 @@
-import Container from '../Container/Container'
+import Container from '../../ui-kit/Container/Container'
 import styles from './Footer.module.scss'
 import logoImg from '../../img/icons/logo.png'
 

@@ -175,14 +175,29 @@
 .burger__item {
     display: block;
     padding: 12px 24px;
-    color: #333;
-    font-size: 20px;
-    font-weight: 600;
+    color: var(--black_subtitle);
+    font-size: var(--fz_20);
+    font-weight: var(--fw_500);
     text-decoration: none;
-    transition-duration: .25s;
 
-    &:hover {
-        background-color: #CFD8DC;
+    @include smallDesktop {
+        font-size: var(--fz_20_m92);
+
+    }
+
+    &_btn {
+        color: var(--white);
+        display: block;
+        padding: 12px 24px;
+        font-size: var(--fz_16);
+        font-weight: var(--fw_700);
+        text-decoration: none;
+        transition-duration: .25s;
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+
+        }
     }
 }
 
@@ -196,6 +211,5 @@
         left: 50%;
         bottom: -5px;
         transform: translateX(-50%);
-        transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
     }
 }

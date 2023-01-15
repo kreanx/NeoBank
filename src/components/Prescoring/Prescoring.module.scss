@@ -20,6 +20,12 @@
     &__top {
         display: flex;
         width: 80%;
+
+        @include smallDesktop {
+            width: 100%;
+            flex-direction: column;
+            gap: 30px;
+        }
     }
 
     &__block {
@@ -34,6 +40,14 @@
             display: flex;
             justify-content: space-between;
             gap: 200px;
+
+            @include desktop {
+                gap: 70px;
+            }
+
+            @include smallDesktop {
+                gap: 30px;
+            }
         }
 
         &_input {
@@ -46,6 +60,15 @@
         font-size: var(--fz_30);
         line-height: 100%;
         color: var(--black_exchange);
+
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+        }
     }
 
     &__subtitle {
@@ -53,6 +76,14 @@
         font-size: var(--fz_20);
         line-height: 100%;
         color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_20_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_20_m92);
+        }
     }
 
     &__step {
@@ -68,12 +99,21 @@
         font-weight: var(--fw_500);
         font-size: var(--fz_16);
         line-height: 100%;
-        color: var(--exchange_black);
+        color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+
     }
 
     &__divider {
         margin: 0 40px;
         border-left: 1px dashed rgba(128, 128, 128, 0.4);
+
+        @include smallDesktop {
+            display: none;
+        }
     }
 
     &__inputs {
@@ -85,8 +125,17 @@
         &_title {
             font-weight: var(--fw_700);
             font-size: var(--fz_20);
-            color: var(--exchange_black);
+            color: var(--black_exchange);
             margin-top: 32px;
+
+
+            @include desktop {
+                font-size: var(--fz_20_m13);
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_20_m92);
+            }
 
         }
     }
@@ -103,6 +152,15 @@
         color: var(--grey_currency);
         width: 100%;
         outline: none;
+
+
+        @include desktop {
+            font-size: var(--fz_14_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_14_m92);
+        }
 
         &[type=number]::-webkit-inner-spin-button,
         &[type=number]::-webkit-outer-spin-button,
@@ -141,9 +199,18 @@
 
         color: var(--black_form);
 
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+
+
         &_icon {
             transform: translate(-35px, 22px);
             margin-right: -22px;
+
+            @include smallDesktop {
+                transform: translate(-35px, 19px);
+            }
         }
 
         &_required {
@@ -158,6 +225,10 @@
                 line-height: 100%;
                 right: -15px;
                 color: var(--red_form);
+
+                @include desktop {
+                    font-size: var(--fz_16_m13);
+                }
 
             }
         }

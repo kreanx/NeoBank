@@ -1,11 +1,11 @@
-export interface TItem {
+export interface IItem {
 	img: string
 	title: string
 	url: string
 	description: string
 }
 
-export interface TSlider {
-	items: TItem[]
+export interface ISlider {
+	items: IItem[]
 	mockImg: string
 }

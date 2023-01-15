@@ -1,5 +1,5 @@
-import DigitalCard from 'components/DigitalCard/DigitalCard'
-import HowToCard from 'components/HowToCard/HowtoCard'
+import DigitalCard from 'pages/DigitalCard/DigitalCard'
+import HowToCard from 'pages/HowToCard/HowtoCard'
 import LoanForm from 'components/Prescoring/Prescoring'
 import Tabs from '../components/Tabs/Tabs'
 

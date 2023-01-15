@@ -1,40 +1,19 @@
-import Container from '../Container/Container'
+import Container from '../../ui-kit/Container/Container'
 import styles from './Exchange.module.scss'
 import townhall from '../../img/home/townhall.png'
 import { useState, useEffect } from 'react'
-import ExchangeItem from '../ExchangeItem/ExchangeItem'
-import { TItemProps } from './types'
+import ExchangeItem from './ExchangeItem/ExchangeItem'
+import { IItemProps } from './types'
+import getCurrencyes from 'services/api/getCurrencyes'
 
 const Exchange: React.FC = () => {
 	const currencyList: string[] = ['USD', 'EUR', 'SGD', 'JPY', 'CNH', 'HKD']
 	const toCurrency = 'RUB'
 
-	const [currency, setCurrency] = useState([])
+	const [currency, setCurrency] = useState<IItemProps[] | undefined[]>([])
 
 	useEffect(() => {
-		const options = {
-			method: 'GET',
-			headers: {
-				'X-RapidAPI-Key': '141fc98f46msh353d93f5a1e571bp195a88jsn81da51edfbf5',
-				'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com',
-			},
-		}
-
-		currencyList.forEach((currencyName) => {
-			fetch(
-				`https://currency-exchange.p.rapidapi.com/exchange?from=${currencyName}&to=${toCurrency}&q=1.0`,
-				options
-			)
-				.then((response) => response.json())
-				.then((response) => {
-					const newObj = {
-						currencyName: currencyName,
-						currencyAmount: response.toFixed(2),
-					}
-					setCurrency((prev) => [...prev, newObj])
-				})
-				.catch((error) => console.error(error))
-		})
+		getCurrencyes(currencyList, toCurrency, setCurrency)
 	}, [])
 
 	return (
@@ -47,7 +26,7 @@ const Exchange: React.FC = () => {
 						</h2>
 						<h3 className={styles.exchange__subtitle}>Currency</h3>
 						<div className={styles.exchange__currency}>
-							{currency.map((item: TItemProps, i) => {
+							{currency.map((item: IItemProps, i) => {
 								return (
 									<ExchangeItem
 										key={i}

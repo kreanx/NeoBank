@@ -1,4 +1,4 @@
-import Container from 'components/Container/Container'
+import Container from 'ui-kit/Container/Container'
 import { Formik, Form, Field } from 'formik'
 import styles from './Prescoring.module.scss'
 import clsx from 'clsx'
@@ -8,40 +8,49 @@ import * as Yup from 'yup'
 import FormSuccess from 'img/tsIcons/FormSuccess'
 import { useState } from 'react'
 import Loader from '../../ui-kit/Loader/Loader'
+import MaskedInput from 'react-text-mask'
+import PrescoringField from './PrescoringField/PrescoringField'
+import Content from './Content'
 
 const Prescoring: React.FC = () => {
 	const [loading, isLoading] = useState(false)
 
+	const passportSeriesMask = [/[1-9]/, /\d/, /\d/, /\d/]
+	const passportNumberMask = [/[1-9]/, /\d/, /\d/, /\d/, /\d/, /\d/]
+
+	const age = 18
+	const year = 100
+
 	const checkAge = () => {
 		const now = new Date()
-		return new Date(now.setFullYear(now.getFullYear() - 18))
+		return new Date(now.setFullYear(now.getFullYear() - age))
 	}
 
 	const validTime = () => {
 		const now = new Date()
-		return new Date(now.setFullYear(now.getFullYear() - 100))
+		return new Date(now.setFullYear(now.getFullYear() - year))
 	}
 
 	const SignupSchema = Yup.object().shape({
 		firstName: Yup.string().required('Required'),
 		lastName: Yup.string().required('Required'),
-		middleName: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!'),
+		middleName: Yup.string().min(2, 'Too Short!').max(20, 'Too Long!'),
 		term: Yup.string()
 			.min(2, 'Too Short!')
-			.max(50, 'Too Long!')
+			.max(20, 'Too Long!')
 			.required('Required'),
 		birthdate: Yup.date()
 			.min(validTime(), 'Please enter a valid date')
 			.max(checkAge(), 'You must be at least 18 years old!')
 			.required('Required'),
 		passportSeries: Yup.number()
+			.required('Required')
 			.min(1000, 'Too Short!')
-			.max(9999, 'Too Long!')
-			.required('Required'),
+			.typeError('Series must be 4 digits minimum'),
 		passportNumber: Yup.number()
+			.required('Required')
 			.min(100000, 'Too Short!')
-			.max(999999, 'Too Long!')
-			.required('Required'),
+			.typeError('Number must be 6 digits minimum'),
 		email: Yup.string().email('Invalid email').required('Required'),
 		amount: Yup.number().min(15000, 'Too Short!').max(600000, 'Too Long!'),
 	})
@@ -152,204 +161,25 @@ const Prescoring: React.FC = () => {
 										Contact Information
 									</h3>
 									<div className={styles.form__inputs}>
-										<div className={styles.form__wrapper}>
-											<label htmlFor="lastName" className={styles.form__label}>
-												Your last name
-												<span className={styles.form__label_required}></span>
-											</label>
-											<div className={styles.form__field}>
-												<Field
-													id="lastName"
-													placeholder="For Example Doe"
-													type="text"
-													value={values.lastName}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.lastName && touched.lastName,
-													})}
+										{Content.map((item, i) => {
+											return (
+												<PrescoringField
+													key={i}
+													errors={errors}
+													handleBlur={handleBlur}
+													handleChange={handleChange}
+													label={item.label}
+													name={item.name}
+													placeHolder={item.placeHolder}
+													touched={touched}
+													type={item.type}
+													values={values}
+													styles={styles}
+													options={item.options}
+													reqired={item.reqired}
 												/>
-												<div className={styles.form__label_icon}>
-													{errors.lastName && touched.lastName ? (
-														<FormError />
-													) : null}
-													{!errors.lastName && touched.lastName ? (
-														<FormSuccess />
-													) : null}
-												</div>
-											</div>
-											{errors.lastName && touched.lastName && (
-												<div className={styles.form__input_errortext}>
-													{errors.lastName}
-												</div>
-											)}
-										</div>
-										<div className={styles.form__wrapper}>
-											<label htmlFor="firstName" className={styles.form__label}>
-												Your first name
-												<span className={styles.form__label_required}></span>
-											</label>
-											<div className={styles.form__field}>
-												<Field
-													id="firstName"
-													placeholder="For Example John"
-													type="text"
-													value={values.firstName}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.firstName && touched.firstName,
-													})}
-												/>
-												<div className={styles.form__label_icon}>
-													{errors.firstName && touched.firstName ? (
-														<FormError />
-													) : null}
-													{!errors.firstName && touched.firstName ? (
-														<FormSuccess />
-													) : null}
-												</div>
-											</div>
-											{errors.firstName && touched.firstName && (
-												<div className={styles.form__input_errortext}>
-													{errors.firstName}
-												</div>
-											)}
-										</div>
-										<div className={styles.form__wrapper}>
-											<label
-												htmlFor="middleName"
-												className={styles.form__label}
-											>
-												Your middleName
-											</label>
-											<div className={styles.form__field}>
-												<Field
-													id="middleName"
-													placeholder="For Example Victorovich"
-													type="text"
-													value={values.middleName}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.middleName && touched.middleName,
-													})}
-												/>
-												<div className={styles.form__label_icon}>
-													{errors.middleName && touched.middleName ? (
-														<FormError />
-													) : null}
-													{!errors.middleName && touched.middleName ? (
-														<FormSuccess />
-													) : null}
-												</div>
-											</div>
-											{errors.middleName && touched.middleName && (
-												<div className={styles.form__input_errortext}>
-													{errors.middleName}
-												</div>
-											)}
-										</div>
-										<div className={styles.form__wrapper}>
-											<label htmlFor="term" className={styles.form__label}>
-												Select term
-												<span className={styles.form__label_required}></span>
-											</label>
-
-											<div className={styles.form__field}>
-												<Field
-													id="term"
-													placeholder="6 month"
-													as="select"
-													value={values.term}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.term && touched.term,
-													})}
-												>
-													<option value="6 month">6 month</option>
-													<option value="12 month">12 month</option>
-													<option value="18 month">18 month</option>
-													<option value="24 month">24 month</option>
-												</Field>
-											</div>
-
-											{errors.term && touched.term && (
-												<div className={styles.form__input_errortext}>
-													{errors.term}
-												</div>
-											)}
-										</div>
-										<div className={styles.form__wrapper}>
-											<label htmlFor="email" className={styles.form__label}>
-												Your email
-												<span className={styles.form__label_required}></span>
-											</label>
-
-											<div className={styles.form__field}>
-												<Field
-													id="email"
-													placeholder="test@gmail.com"
-													type="email"
-													value={values.email}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.email && touched.email,
-													})}
-												/>
-												<div className={styles.form__label_icon}>
-													{errors.email && touched.email ? <FormError /> : null}
-													{!errors.email && touched.email ? (
-														<FormSuccess />
-													) : null}
-												</div>
-											</div>
-											{errors.email && touched.email && (
-												<div className={styles.form__input_errortext}>
-													{errors.email}
-												</div>
-											)}
-										</div>
-										<div className={styles.form__wrapper}>
-											<label htmlFor="birthdate" className={styles.form__label}>
-												Your date of birthdate
-												<span className={styles.form__label_required}></span>
-											</label>
-											<div className={styles.form__field}>
-												<Field
-													id="birthdate"
-													placeholder="Select Date and Time"
-													type="date"
-													value={values.birthdate}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.birthdate && touched.birthdate,
-													})}
-												/>
-												<div className={styles.form__label_icon}>
-													{errors.birthdate && touched.birthdate ? (
-														<FormError />
-													) : null}
-													{!errors.birthdate && touched.birthdate ? (
-														<FormSuccess />
-													) : null}
-												</div>
-											</div>
-											{errors.birthdate && touched.birthdate && (
-												<div className={styles.form__input_errortext}>
-													{errors.birthdate}
-												</div>
-											)}
-										</div>
+											)
+										})}
 										<div className={styles.form__wrapper}>
 											<label
 												htmlFor="passportSeries"
@@ -359,18 +189,25 @@ const Prescoring: React.FC = () => {
 												<span className={styles.form__label_required}></span>
 											</label>
 											<div className={styles.form__field}>
-												<Field
-													id="passportSeries"
-													placeholder="0000"
-													type="number"
-													value={values.passportSeries}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.passportSeries && touched.passportSeries,
-													})}
-												/>
+												<Field name="passportSeries">
+													{({ field }) => (
+														<MaskedInput
+															{...field}
+															mask={passportSeriesMask}
+															id="passportSeries"
+															placeholder="0000"
+															type="text"
+															value={values.passportSeries}
+															onChange={handleChange}
+															onBlur={handleBlur}
+															className={clsx(styles.form__input, {
+																[styles.form__input_error]:
+																	errors.passportSeries &&
+																	touched.passportSeries,
+															})}
+														/>
+													)}
+												</Field>
 												<div className={styles.form__label_icon}>
 													{errors.passportSeries && touched.passportSeries ? (
 														<FormError />
@@ -395,18 +232,25 @@ const Prescoring: React.FC = () => {
 												<span className={styles.form__label_required}></span>
 											</label>
 											<div className={styles.form__field}>
-												<Field
-													id="passportNumber"
-													placeholder="000000"
-													type="number"
-													value={values.passportNumber}
-													onChange={handleChange}
-													onBlur={handleBlur}
-													className={clsx(styles.form__input, {
-														[styles.form__input_error]:
-															errors.passportNumber && touched.passportNumber,
-													})}
-												/>
+												<Field name="passportNumber">
+													{({ field }) => (
+														<MaskedInput
+															{...field}
+															mask={passportNumberMask}
+															id="passportNumber"
+															placeholder="000000"
+															type="text"
+															value={values.passportNumber}
+															onChange={handleChange}
+															onBlur={handleBlur}
+															className={clsx(styles.form__input, {
+																[styles.form__input_error]:
+																	errors.passportNumber &&
+																	touched.passportNumber,
+															})}
+														/>
+													)}
+												</Field>
 												<div className={styles.form__label_icon}>
 													{errors.passportNumber && touched.passportNumber ? (
 														<FormError />

@@ -1,8 +1,8 @@
 import styles from './Button.module.scss'
 import clsx from 'clsx'
-import { TButton } from './types'
+import { IButton } from './types'
 
-const Button: React.FC<TButton> = ({
+const Button: React.FC<IButton> = ({
 	label,
 	disabled,
 	customStyle,

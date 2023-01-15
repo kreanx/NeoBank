@@ -1,23 +1,23 @@
 import styles from './Slider.module.scss'
 import { useEffect, useState, useRef } from 'react'
-import SliderArrow from 'ui-kit/SliderArrow/SliderArrow'
-import { TSlider } from './types'
-import SliderItem from 'ui-kit/SliderItem/SliderItem'
+import SliderArrow from 'ui-kit/Slider/SliderArrow/SliderArrow'
+import { ISlider } from './types'
+import SliderItem from 'ui-kit/Slider/SliderItem/SliderItem'
 
-const Slider: React.FC<TSlider> = ({ items, mockImg }) => {
-	const wrapperRef = useRef(null)
-	const nextArrowRef = useRef(null)
-	const prevArrowRef = useRef(null)
-	const newsItemRef = useRef(null)
-	const containerRef = useRef(null)
+const Slider: React.FC<ISlider> = ({ items, mockImg }) => {
+	const wrapperRef = useRef<HTMLInputElement>(null)
+	const nextArrowRef = useRef<HTMLInputElement>(null)
+	const prevArrowRef = useRef<HTMLInputElement>(null)
+	const newsItemRef = useRef<HTMLInputElement>(null)
+	const containerRef = useRef<HTMLInputElement>(null)
 
-	const [blockSize, setBlockSize] = useState(0)
-	const [itemSize, setItemSize] = useState(0)
-	const [gap, setGap] = useState(0)
-	const [containerSize, setContainerSize] = useState(0)
+	const [blockSize, setBlockSize] = useState<number>(0)
+	const [itemSize, setItemSize] = useState<number>(0)
+	const [gap, setGap] = useState<number>(0)
+	const [containerSize, setContainerSize] = useState<number>(0)
 
-	const [isPrevDisabled, setPrevDisabled] = useState(true)
-	const [isNextDisabled, setNextDisabled] = useState(false)
+	const [isPrevDisabled, setPrevDisabled] = useState<boolean>(true)
+	const [isNextDisabled, setNextDisabled] = useState<boolean>(false)
 
 	const fullItemSize = itemSize + gap
 	const fullLength = items.length * fullItemSize
@@ -118,7 +118,7 @@ const Slider: React.FC<TSlider> = ({ items, mockImg }) => {
 			<div className={styles.news__arrows}>
 				<SliderArrow
 					disabled={isPrevDisabled}
-					handler={scroll}
+					scrollHandler={scroll}
 					amount={200}
 					direction={'prev'}
 					element={wrapperRef}
@@ -127,7 +127,7 @@ const Slider: React.FC<TSlider> = ({ items, mockImg }) => {
 				/>
 				<SliderArrow
 					disabled={isNextDisabled}
-					handler={scroll}
+					scrollHandler={scroll}
 					amount={200}
 					direction={'next'}
 					element={wrapperRef}

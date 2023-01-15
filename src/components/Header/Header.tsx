@@ -1,5 +1,5 @@
 import { Button } from '../../ui-kit/Button/Button'
-import Container from '../Container/Container'
+import Container from '../../ui-kit/Container/Container'
 import styles from './Header.module.scss'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -41,30 +41,24 @@ const Header: React.FC = () => {
 					</label>
 					<ul className={styles.burger__box}>
 						<li>
-							<a className={styles.burger__item} href="#">
-								Credit card
-							</a>
+							<Link to={'/loan'}>
+								<div className={styles.burger__item}>Credit card</div>
+							</Link>
 						</li>
 						<li>
-							<a className={styles.burger__item} href="#">
-								Product
-							</a>
+							<div className={styles.burger__item}>Product</div>
 						</li>
 						<li>
-							<a className={styles.burger__item} href="#">
-								Account
-							</a>
+							<div className={styles.burger__item}>Account</div>
 						</li>
 						<li>
-							<a className={styles.burger__item} href="#">
-								Resources
-							</a>
+							<div className={styles.burger__item}>Resources</div>
 						</li>
 						<li>
-							добавить BUTTON
-							<a className={styles.burger__item} href="#">
-								Online Bank
-							</a>
+							<Button
+								label="Online Bank"
+								customStyle={styles.burger__item_btn}
+							/>
 						</li>
 					</ul>
 				</nav>

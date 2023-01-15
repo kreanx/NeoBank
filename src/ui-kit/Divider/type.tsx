@@ -1,5 +1,5 @@
-interface TDivider {
+interface IDivider {
 	classes?: string
 }
 
-export default TDivider
+export default IDivider

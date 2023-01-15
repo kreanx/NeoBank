@@ -1,8 +1,8 @@
 import styles from './Divider.module.scss'
-import TDivider from './type'
+import IDivider from './type'
 import clsx from 'clsx'
 
-const Divider: React.FC<TDivider> = ({ classes }) => {
+const Divider: React.FC<IDivider> = ({ classes }) => {
 	return <div className={clsx(styles.divider, classes)}></div>
 }
 

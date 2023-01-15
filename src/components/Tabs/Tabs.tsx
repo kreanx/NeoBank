@@ -1,14 +1,14 @@
 import styles from './Tabs.module.scss'
-import Container from 'components/Container/Container'
+import Container from 'ui-kit/Container/Container'
 import TabsButton from 'ui-kit/TabsButton/TabsButtons'
 import { useState } from 'react'
-import About from '../About/About'
-import FAQ from 'components/FAQ/FAQ'
-import Cashback from '../Cashback/Cashback'
-import Rates from '../Rates/Ratex'
+import About from '../../pages/AboutCard/AboutCard'
+import FAQ from 'pages/FAQ/FAQ'
+import Cashback from '../../pages/Cashback/Cashback'
+import Rates from '../../pages/Rates/Ratex'
 
 const Tabs: React.FC = () => {
-	const [isActive, setActive] = useState('0')
+	const [isActive, setActive] = useState<string>('0')
 
 	const activeHandler = (id: string) => {
 		setActive(id)

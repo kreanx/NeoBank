@@ -1,4 +1,4 @@
-interface TTabsButton {
+interface ITabsButton {
 	style?: string
 	activeStyle: string
 	id: string
@@ -7,4 +7,4 @@ interface TTabsButton {
 	activeHandler: (id: string) => void
 }
 
-export default TTabsButton
+export default ITabsButton

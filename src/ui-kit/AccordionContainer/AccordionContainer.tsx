@@ -1,12 +1,12 @@
-import { AccordionItem } from 'ui-kit/AccoridonItem/AccordionItem'
+import { AccordionItem } from 'ui-kit/AccordionContainer/AccoridonItem/AccordionItem'
 import { useState } from 'react'
-import { TAccordionContainerProps } from './types'
+import { IAccordionContainerProps } from './types'
 
-const AccordionContainer: React.FC<TAccordionContainerProps> = ({
+const AccordionContainer: React.FC<IAccordionContainerProps> = ({
 	accordionItems,
 	initialValue = -1,
 }) => {
-	const [isOpenFirst, setOpen] = useState(initialValue)
+	const [isOpenFirst, setOpen] = useState<number>(initialValue)
 
 	const openHandler = (id: number) => {
 		if (isOpenFirst === id) {

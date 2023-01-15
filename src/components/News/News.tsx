@@ -1,11 +1,13 @@
 import Slider from 'ui-kit/Slider/Slider'
-import Container from '../Container/Container'
+import Container from '../../ui-kit/Container/Container'
 import styles from './News.module.scss'
 import { useState, useEffect } from 'react'
-import { ArticleType } from './types'
+import { IArticle } from './types'
+import getNews from '../../services/api/getNews'
+import { IItem } from '../../ui-kit/Slider/types'
 
 const News: React.FC = () => {
-	const [news, setNews] = useState([])
+	const [news, setNews] = useState<IItem[] | undefined[]>([])
 
 	const mockImgSrc =
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTNemDx32kHbtVSXNMkRyINamV255JkT2r347HXiCI7CIFk3afiF0dG8VmQOkLTuPzprM&usqp=CAU'
@@ -29,7 +31,7 @@ const News: React.FC = () => {
 		return text
 	}
 
-	const render: (article?: ArticleType) => void = (
+	const render: (article?: IArticle) => void = (
 		article = {
 			urlToImage: mockImgSrc,
 			url: '#!',
@@ -47,26 +49,8 @@ const News: React.FC = () => {
 		setNews((prev) => [...prev, newObj])
 	}
 
-	const fetchNews: () => Promise<Response> = async () => {
-		const data = await fetch(
-			'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b8e220bebe8e422fa69d8f4844730fec'
-		)
-		return data
-	}
-
 	useEffect(() => {
-		fetchNews()
-			.then((response) => response.json())
-			.then((response) => {
-				for (let i = 0; i <= response.articles.length - 1; i++) {
-					render(response.articles[i])
-				}
-			})
-			.catch((error) => {
-				render()
-				// throw new Error('Error while fetch', error)
-				console.log(error)
-			})
+		getNews(render)
 	}, [])
 
 	return (

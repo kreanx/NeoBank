@@ -1,15 +1,16 @@
-import Container from '../Container/Container'
+import Container from '../../ui-kit/Container/Container'
 import styles from './Support.module.scss'
 import planeImg from '../../img/icons/plane.png'
 import emailImg from '../../img/icons/email.png'
 import { useState, useEffect } from 'react'
+import localStorageHandler from 'services/localStorage/localStorageHandler'
 
 const Support: React.FC = () => {
 	const [value, setValue] = useState('')
 	const [isSubscribed, setSubscribed] = useState(false)
 
 	useEffect(() => {
-		if (localStorage.getItem('isSubscribed')) {
+		if (localStorageHandler('isSubscribed', 'get')) {
 			setSubscribed(true)
 		}
 	}, [])
@@ -28,7 +29,7 @@ const Support: React.FC = () => {
 				response.json()
 			})
 			.then((data) => {
-				window.localStorage.setItem('isSubscribed', 'true')
+				localStorageHandler('isSubscribed', 'set', 'true')
 				setSubscribed(true)
 				console.log('You are subscribed:', data)
 			})

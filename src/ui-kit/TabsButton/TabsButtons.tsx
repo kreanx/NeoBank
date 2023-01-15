@@ -1,6 +1,7 @@
 import clsx from 'clsx'
-import TTabsButton from './types'
-const TabsButton: React.FC<TTabsButton> = ({
+import ITabsButton from './types'
+
+const TabsButton: React.FC<ITabsButton> = ({
 	style,
 	activeStyle,
 	id,

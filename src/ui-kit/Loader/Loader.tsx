@@ -1,8 +1,8 @@
 import styles from './Loader.module.scss'
-import TLoader from './types'
+import ILoader from './types'
 import clsx from 'clsx'
 
-const Loader: React.FC<TLoader> = ({ fullsize }) => {
+const Loader: React.FC<ILoader> = ({ fullsize }) => {
 	return (
 		<div
 			className={clsx(styles.loader, {
