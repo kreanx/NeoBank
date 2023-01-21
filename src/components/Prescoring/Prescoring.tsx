@@ -172,15 +172,13 @@ const Prescoring: React.FC = () => {
 										{Content.map((item, i) => {
 											return (
 												<PrescoringField
+													{...props}
 													key={i}
-													errors={errors}
 													handleBlur={handleBlur}
 													handleChange={handleChange}
 													label={item.label}
 													name={item.name}
 													placeHolder={item.placeHolder}
-													touched={touched}
-													values={values}
 													styles={styles}
 													options={item.options}
 													required={item.required}
