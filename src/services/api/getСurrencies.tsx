@@ -1,4 +1,4 @@
-async function getCurrencyes(
+async function getСurrencies(
 	currencyList: string[],
 	toCurrency: string,
 	setCurrency
@@ -28,4 +28,4 @@ async function getCurrencyes(
 	})
 }
 
-export default getCurrencyes
+export default getСurrencies

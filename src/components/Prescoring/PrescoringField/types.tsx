@@ -29,11 +29,11 @@ interface IPrescoringField {
 	touched: FormikTouched<IErrorsPool>
 	values: IErrorsPool
 	name: string
-	type: string
 	placeHolder: string
 	label: string
 	options?: string[]
-	reqired?: boolean
+	required?: boolean
+	maxLength?: number
 }
 
 export default IPrescoringField

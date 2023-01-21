@@ -2,19 +2,20 @@ import { Button } from '../../ui-kit/Button/Button'
 import Container from '../../ui-kit/Container/Container'
 import styles from './Header.module.scss'
 import { Link, NavLink } from 'react-router-dom'
+import { routes } from 'services/routes'
 
 const Header: React.FC = () => {
 	return (
 		<header className={styles.header}>
 			<Container>
 				<nav className={styles.header__nav}>
-					<Link to={'/'}>
+					<Link to={routes.home}>
 						<div className={styles.header__logo}>NeoBank</div>
 					</Link>
 					<ul className={styles.header__links}>
 						<li className={styles.header__links_link}>
 							<NavLink
-								to="/loan"
+								to={routes.loan}
 								className={({ isActive }) =>
 									isActive ? styles.active : undefined
 								}
@@ -41,7 +42,7 @@ const Header: React.FC = () => {
 					</label>
 					<ul className={styles.burger__box}>
 						<li>
-							<Link to={'/loan'}>
+							<Link to={routes.loan}>
 								<div className={styles.burger__item}>Credit card</div>
 							</Link>
 						</li>

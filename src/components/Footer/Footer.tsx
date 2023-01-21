@@ -1,6 +1,7 @@
 import Container from '../../ui-kit/Container/Container'
 import styles from './Footer.module.scss'
 import logoImg from '../../img/icons/logo.png'
+import footerLinks from './Content'
 
 const Footer: React.FC = () => {
 	return (
@@ -27,22 +28,13 @@ const Footer: React.FC = () => {
 							</div>
 						</div>
 						<ul className={styles.footer__tags}>
-							<li className={styles.footer__tags_item}>About bank</li>
-							<li className={styles.footer__tags_item}>Ask a&nbsp;Question</li>
-							<li className={styles.footer__tags_item}>
-								Quality of&nbsp;service
-							</li>
-							<li className={styles.footer__tags_item}>Requisites</li>
-							<li className={styles.footer__tags_item}>Press center</li>
-							<li className={styles.footer__tags_item}>Bank career</li>
-							<li className={styles.footer__tags_item}>Investors</li>
-							<li className={styles.footer__tags_item}>Analytics</li>
-							<li className={styles.footer__tags_item}>
-								Business and processes
-							</li>
-							<li className={styles.footer__tags_item}>
-								Compliance and business ethics
-							</li>
+							{footerLinks.map((item, i) => {
+								return (
+									<li key={i} className={styles.footer__tags_item}>
+										{item}
+									</li>
+								)
+							})}
 						</ul>
 						<div className={styles.footer__line}></div>
 						<p className={styles.footer__cookies}>

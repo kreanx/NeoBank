@@ -2,10 +2,10 @@ import styles from './Tabs.module.scss'
 import Container from 'ui-kit/Container/Container'
 import TabsButton from 'ui-kit/TabsButton/TabsButtons'
 import { useState } from 'react'
-import About from '../../pages/AboutCard/AboutCard'
-import FAQ from 'pages/FAQ/FAQ'
-import Cashback from '../../pages/Cashback/Cashback'
-import Rates from '../../pages/Rates/Ratex'
+import AboutCard from 'components/AboutCard/AboutCard'
+import Rates from 'components/Rates/Rates'
+import Cashback from 'components/Cashback/Cashback'
+import FAQ from 'components/FAQ/FAQ'
 
 const Tabs: React.FC = () => {
 	const [isActive, setActive] = useState<string>('0')
@@ -17,7 +17,7 @@ const Tabs: React.FC = () => {
 	const elements = [
 		{
 			label: 'About card',
-			element: <About />,
+			element: <AboutCard />,
 		},
 		{
 			label: 'Rates and conditions',

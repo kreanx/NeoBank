@@ -1,13 +1,14 @@
 import Container from '../../ui-kit/Container/Container'
-import styles from './Support.module.scss'
+import styles from './SubscribeNews.module.scss'
 import planeImg from '../../img/icons/plane.png'
 import emailImg from '../../img/icons/email.png'
 import { useState, useEffect } from 'react'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
+import subscribeNews from 'services/api/subscribeNews'
 
-const Support: React.FC = () => {
-	const [value, setValue] = useState('')
-	const [isSubscribed, setSubscribed] = useState(false)
+const SunscribeNews: React.FC = () => {
+	const [value, setValue] = useState<string>('')
+	const [isSubscribed, setSubscribed] = useState<boolean>(false)
 
 	useEffect(() => {
 		if (localStorageHandler('isSubscribed', 'get')) {
@@ -17,27 +18,7 @@ const Support: React.FC = () => {
 
 	const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-
-		await fetch('/email', {
-			method: 'POST',
-			body: JSON.stringify(value),
-		})
-			.then((response) => {
-				if (!response.ok) {
-					return Promise.reject('Failed to send request!')
-				}
-				response.json()
-			})
-			.then((data) => {
-				localStorageHandler('isSubscribed', 'set', 'true')
-				setSubscribed(true)
-				console.log('You are subscribed:', data)
-			})
-			.catch((error) => {
-				setValue('')
-				console.error('Error:', error)
-				alert('Failed to send request!')
-			})
+		subscribeNews(setSubscribed, value, setValue)
 	}
 
 	const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,4 +66,4 @@ const Support: React.FC = () => {
 	)
 }
 
-export default Support
+export default SunscribeNews

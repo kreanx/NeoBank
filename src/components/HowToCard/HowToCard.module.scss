@@ -29,7 +29,7 @@
         @include smallDesktop {
             gap: 50px;
             flex-direction: column;
-            align-items: center;
+            align-items: initial;
         }
 
     }

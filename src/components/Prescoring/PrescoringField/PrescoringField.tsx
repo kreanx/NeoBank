@@ -12,28 +12,33 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 	touched,
 	values,
 	name,
-	type,
 	placeHolder,
 	label,
 	options,
-	reqired,
+	required,
+	maxLength,
 }) => {
-	if (type === 'text' || type === 'email')
+	if (!options)
 		return (
 			<div className={styles.form__wrapper}>
 				<label htmlFor={name} className={styles.form__label}>
 					{label}
-					{reqired ? <span className={styles.form__label_required}></span> : ''}
+					{required ? (
+						<span className={styles.form__label_required}></span>
+					) : (
+						''
+					)}
 				</label>
 				<div className={styles.form__field}>
 					<Field
 						name={name}
 						id={name}
 						placeholder={placeHolder}
-						type={type}
+						type="text"
 						value={values[name]}
 						onChange={handleChange}
 						onBlur={handleBlur}
+						maxLength={maxLength}
 						className={clsx(styles.form__input, {
 							[styles.form__input_error]: errors[name] && touched[name],
 						})}
@@ -49,76 +54,43 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 			</div>
 		)
 
-	if (type === 'select')
-		return (
-			<div className={styles.form__wrapper}>
-				<label htmlFor={name} className={styles.form__label}>
-					{label}
-					{reqired ? <span className={styles.form__label_required}></span> : ''}
-				</label>
-				<div className={styles.form__field}>
-					<Field
-						name={name}
-						id={name}
-						placeholder={placeHolder}
-						as={type}
-						value={values[name]}
-						onChange={handleChange}
-						onBlur={handleBlur}
-						className={clsx(styles.form__input, {
-							[styles.form__input_error]: errors[name] && touched[name],
-						})}
-					>
-						{options.map((option, i) => {
-							return (
-								<option key={i} value={option}>
-									{option}
-								</option>
-							)
-						})}
-					</Field>
-					<div className={styles.form__label_icon}>
-						{errors[name] && touched[name] ? <FormError /> : null}
-						{!errors[name] && touched[name] ? <FormSuccess /> : null}
-					</div>
+	return (
+		<div className={styles.form__wrapper}>
+			<label htmlFor={name} className={styles.form__label}>
+				{label}
+				{required ? <span className={styles.form__label_required}></span> : ''}
+			</label>
+			<div className={styles.form__field}>
+				<Field
+					name={name}
+					id={name}
+					placeholder={placeHolder}
+					as="select"
+					value={values[name]}
+					onChange={handleChange}
+					onBlur={handleBlur}
+					className={clsx(styles.form__input, {
+						[styles.form__input_error]: errors[name] && touched[name],
+					})}
+				>
+					{options.map((option, i) => {
+						return (
+							<option key={i} value={option}>
+								{option}
+							</option>
+						)
+					})}
+				</Field>
+				<div className={styles.form__label_icon}>
+					{errors[name] && touched[name] ? <FormError /> : null}
+					{!errors[name] && touched[name] ? <FormSuccess /> : null}
 				</div>
-				{errors[name] && touched[name] && (
-					<div className={styles.form__input_errortext}>{errors[name]}</div>
-				)}
 			</div>
-		)
-
-	if (type === 'date')
-		return (
-			<div className={styles.form__wrapper}>
-				<label htmlFor={name} className={styles.form__label}>
-					{label}
-					{reqired ? <span className={styles.form__label_required}></span> : ''}
-				</label>
-				<div className={styles.form__field}>
-					<Field
-						name={name}
-						id={name}
-						placeholder={placeHolder}
-						type={type}
-						value={values[name]}
-						onChange={handleChange}
-						onBlur={handleBlur}
-						max="2023-12-31"
-						className={clsx(styles.form__input, {
-							[styles.form__input_error]: errors[name] && touched[name],
-						})}
-					/>
-					<div className={styles.form__label_icon}>
-						{errors[name] && touched[name] ? <FormError /> : null}
-						{!errors[name] && touched[name] ? <FormSuccess /> : null}
-					</div>
-				</div>
-				{errors[name] && touched[name] && (
-					<div className={styles.form__input_errortext}>{errors[name]}</div>
-				)}
-			</div>
-		)
+			{errors[name] && touched[name] && (
+				<div className={styles.form__input_errortext}>{errors[name]}</div>
+			)}
+		</div>
+	)
 }
 
 export default PrescoringField

@@ -4,7 +4,7 @@ import townhall from '../../img/home/townhall.png'
 import { useState, useEffect } from 'react'
 import ExchangeItem from './ExchangeItem/ExchangeItem'
 import { IItemProps } from './types'
-import getCurrencyes from 'services/api/getCurrencyes'
+import getСurrencies from 'services/api/getСurrencies'
 
 const Exchange: React.FC = () => {
 	const currencyList: string[] = ['USD', 'EUR', 'SGD', 'JPY', 'CNH', 'HKD']
@@ -13,7 +13,7 @@ const Exchange: React.FC = () => {
 	const [currency, setCurrency] = useState<IItemProps[] | undefined[]>([])
 
 	useEffect(() => {
-		getCurrencyes(currencyList, toCurrency, setCurrency)
+		getСurrencies(currencyList, toCurrency, setCurrency)
 	}, [])
 
 	return (
