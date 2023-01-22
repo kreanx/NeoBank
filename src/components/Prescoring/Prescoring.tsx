@@ -93,7 +93,9 @@ const Prescoring: React.FC = () => {
 														placeholder="15000 - 600000"
 														type="number"
 														value={values.amount}
-														onChange={(e) => {
+														onChange={(
+															e: React.ChangeEvent<HTMLInputElement>
+														) => {
 															maxLengthHandler(e, e.target.maxLength)
 															amountHandler(e)
 															handleChange(e)

@@ -39,7 +39,7 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 						placeholder={placeHolder}
 						type={isOnlyDigits ? 'number' : 'text'}
 						value={values[name]}
-						onChange={(e) => {
+						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 							maxLengthHandler(e, maxLength)
 							handleChange(e)
 						}}
@@ -92,9 +92,7 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 						placeholder={placeHolder}
 						type="date"
 						value={values[name]}
-						onChange={(e) => {
-							handleChange(e)
-						}}
+						onChange={handleChange}
 						onBlur={handleBlur}
 						max={validDateLength}
 						className={clsx(styles.form__input, {
