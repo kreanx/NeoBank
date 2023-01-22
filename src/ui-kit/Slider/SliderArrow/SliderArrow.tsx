@@ -4,7 +4,7 @@ const SliderArrow: React.FC<ISliderArrow> = ({
 	customStyle,
 	scrollHandler,
 	element,
-	reffer,
+	refer,
 	disabled,
 	direction,
 	amount,
@@ -13,7 +13,7 @@ const SliderArrow: React.FC<ISliderArrow> = ({
 		<button
 			className={customStyle}
 			onClick={() => scrollHandler(element, amount, direction)}
-			ref={reffer}
+			ref={refer}
 			disabled={disabled}
 		>
 			<svg

@@ -1,6 +1,6 @@
 import styles from './AccordionItem.module.scss'
 import TAccordionItem from './types'
-import AccordionArrow from '../../../img/tsIcons/AccordionArrow'
+import AccordionArrow from 'img/tsIcons/AccordionArrow'
 import clsx from 'clsx'
 
 const AccordionItem: React.FC<TAccordionItem> = ({

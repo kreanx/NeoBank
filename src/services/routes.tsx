@@ -1,7 +1,7 @@
 import Footer from 'components/Footer/Footer'
 import Header from 'components/Header/Header'
-import Home from 'pages/Home'
-import Loan from 'pages/Loan'
+import Home from 'pages/Home/Home'
+import Loan from 'pages/Loan/Loan'
 import {
 	createBrowserRouter,
 	createRoutesFromElements,

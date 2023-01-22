@@ -35,7 +35,8 @@ const Content = [
 		name: 'birthdate',
 		placeHolder: 'Select Date and Time',
 		required: true,
-		maxLength: 10,
+		maxLength: 4,
+		isDate: true,
 	},
 	{
 		label: 'Your passport series',
@@ -43,6 +44,7 @@ const Content = [
 		placeHolder: '0000',
 		required: true,
 		maxLength: 4,
+		isOnlyDigits: true,
 	},
 	{
 		label: 'Your passport number',
@@ -50,6 +52,7 @@ const Content = [
 		placeHolder: '000000',
 		required: true,
 		maxLength: 6,
+		isOnlyDigits: true,
 	},
 ]
 

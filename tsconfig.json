@@ -16,6 +16,16 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "paths": {
+      "components/*": ["./components/*"],
+      "home/*": ["./pages/Home/*"],
+      "loan/*": ["./pages/Loan/*"],
+      "services/*": ["./services/*"],
+      "ui/*": ["./ui-kit/*"],
+      "global/*": ["./global/*"],
+      "img/*": ["./img/*"],
+      "mocks/*": ["./mocks/*"],
+    },
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"

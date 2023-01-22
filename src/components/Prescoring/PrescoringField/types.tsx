@@ -19,6 +19,8 @@ interface IPrescoringField extends FormikProps<IFormValues> {
 	options?: string[]
 	required?: boolean
 	maxLength?: number
+	isDate?: boolean
+	isOnlyDigits?: boolean
 }
 
 export default IPrescoringField

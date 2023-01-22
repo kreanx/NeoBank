@@ -1,20 +1,20 @@
 import styles from './Slider.module.scss'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, MutableRefObject } from 'react'
 import SliderArrow from 'ui-kit/Slider/SliderArrow/SliderArrow'
-import { ISlider } from './types'
+import { directions, ISlider } from './types'
 import SliderItem from 'ui-kit/Slider/SliderItem/SliderItem'
 
 const Slider: React.FC<ISlider> = ({ items, mockImg }) => {
 	const wrapperRef = useRef<HTMLInputElement>(null)
 	const nextArrowRef = useRef<HTMLInputElement>(null)
 	const prevArrowRef = useRef<HTMLInputElement>(null)
-	const newsItemRef = useRef<HTMLInputElement>(null)
 	const containerRef = useRef<HTMLInputElement>(null)
 
 	const [blockSize, setBlockSize] = useState<number>(0)
 	const [itemSize, setItemSize] = useState<number>(0)
 	const [gap, setGap] = useState<number>(0)
 	const [containerSize, setContainerSize] = useState<number>(0)
+	const [innerItemSize, setInnerItemSize] = useState<number>(0)
 
 	const [isPrevDisabled, setPrevDisabled] = useState<boolean>(true)
 	const [isNextDisabled, setNextDisabled] = useState<boolean>(false)
@@ -26,20 +26,23 @@ const Slider: React.FC<ISlider> = ({ items, mockImg }) => {
 		setBlockSize(wrapperRef.current.clientWidth)
 		setGap(+window.getComputedStyle(wrapperRef.current).gap.replace('px', ''))
 		setContainerSize(containerRef.current.clientWidth)
-		setItemSize(newsItemRef.current.clientWidth)
-
+		setItemSize(innerItemSize)
 		setPrevDisabled(true)
 
 		if (items.length === 1) {
 			setNextDisabled(true)
 		}
-	}, [items])
+	}, [items, innerItemSize])
 
-	const scroll = (item, scrollWidth, direction) => {
+	const scroll = (
+		item: MutableRefObject<HTMLInputElement>,
+		scrollWidth: number,
+		direction: string
+	) => {
 		const left = +window.getComputedStyle(item.current).left.replace('px', '')
 		const quantityOfItems = containerSize / itemSize
 
-		if (direction === 'next') {
+		if (direction === directions.next) {
 			if (left === 0) {
 				setPrevDisabled(false)
 			}
@@ -54,13 +57,13 @@ const Slider: React.FC<ISlider> = ({ items, mockImg }) => {
 			item.current.style.left = left - scrollWidth + 'px'
 		}
 
-		if (direction === 'prev') {
+		if (direction === directions.prev) {
 			if (left <= blockSize - itemSize * 2) {
 				setNextDisabled(false)
 			}
 
 			if (left >= -scrollWidth) {
-				item.current.style.left = 0
+				item.current.style.left = '0'
 				setPrevDisabled(true)
 				return
 			}
@@ -73,34 +76,8 @@ const Slider: React.FC<ISlider> = ({ items, mockImg }) => {
 		e.target.src = mockImg
 	}
 
-	const testItem = (
-		<div className={(styles.news__link, styles.none)}>
-			<div className={styles.news__item} ref={newsItemRef}>
-				<div className={styles.news__item_img}>
-					<img
-						className={styles.news__img}
-						alt="newsImg"
-						src={'item.img'}
-					></img>
-				</div>
-				<h4 className={styles.news__item_title}>{'item.title'}</h4>
-				<p className={styles.news__item_text}>
-					<a
-						className={styles.news__item_link}
-						href={'item.url'}
-						target="_blank"
-						rel="noreferrer"
-					>
-						{'item.description'}
-					</a>
-				</p>
-			</div>
-		</div>
-	)
-
 	return (
 		<>
-			{testItem}
 			<div className={styles.news__slider} ref={containerRef}>
 				<div className={styles.news__items} ref={wrapperRef}>
 					{items.map((item, i) => {
@@ -110,6 +87,7 @@ const Slider: React.FC<ISlider> = ({ items, mockImg }) => {
 								handleImgError={handleImgError}
 								i={i}
 								item={item}
+								sizeHandler={setInnerItemSize}
 							/>
 						)
 					})}
@@ -120,18 +98,18 @@ const Slider: React.FC<ISlider> = ({ items, mockImg }) => {
 					disabled={isPrevDisabled}
 					scrollHandler={scroll}
 					amount={200}
-					direction={'prev'}
+					direction={directions.prev}
 					element={wrapperRef}
-					reffer={prevArrowRef}
+					refer={prevArrowRef}
 					customStyle={styles.news__arrows_prev}
 				/>
 				<SliderArrow
 					disabled={isNextDisabled}
 					scrollHandler={scroll}
 					amount={200}
-					direction={'next'}
+					direction={directions.next}
 					element={wrapperRef}
-					reffer={nextArrowRef}
+					refer={nextArrowRef}
 					customStyle={styles.news__arrows_next}
 				/>
 			</div>

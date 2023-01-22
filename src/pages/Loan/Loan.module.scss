@@ -27,7 +27,7 @@
         margin-top: 14px;
 
         @include smallDesktop {
-            gap: 50px;
+            gap: 30px;
             flex-direction: column;
             align-items: initial;
         }
@@ -80,6 +80,7 @@
 
         @include smallDesktop {
             font-size: var(--fz_16_m92);
+            margin-top: 5px;
         }
 
     }

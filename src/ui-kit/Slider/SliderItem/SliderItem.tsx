@@ -1,10 +1,22 @@
 import styles from './SliderItem.module.scss'
 import ISliderItem from './types'
+import { useRef, useEffect } from 'react'
 
-const SliderItem: React.FC<ISliderItem> = ({ i, item, handleImgError }) => {
+const SliderItem: React.FC<ISliderItem> = ({
+	i,
+	item,
+	handleImgError,
+	sizeHandler,
+}) => {
+	const innerItemSize = useRef<HTMLInputElement>(null)
+
+	useEffect(() => {
+		sizeHandler(innerItemSize.current.clientWidth)
+	}, [])
+
 	return (
 		<div className={styles.news__link} key={i}>
-			<div className={styles.news__item}>
+			<div className={styles.news__item} ref={innerItemSize}>
 				<div className={styles.news__item_img}>
 					<img
 						className={styles.news__img}

@@ -2,6 +2,7 @@ import Container from 'ui-kit/Container/Container'
 import CheckFeatures from 'img/tsIcons/CheckFeatures'
 import styles from './Features.module.scss'
 import Illustration from '../../img/home/Illustration_man.png'
+import featuresContent from './Content'
 
 const Features: React.FC = () => {
 	return (
@@ -20,28 +21,14 @@ const Features: React.FC = () => {
 							have their own functions each feature
 						</h3>
 						<ul className={styles.features__list}>
-							<div className={styles.features__list_block}>
-								<CheckFeatures />
-								<li className={styles.features__list_item}>
-									Powerfull online protection
-								</li>
-							</div>
-							<div className={styles.features__list_block}>
-								<CheckFeatures />
-								<li className={styles.features__list_item}>
-									Cashback without borders
-								</li>
-							</div>
-							<div className={styles.features__list_block}>
-								<CheckFeatures />
-								<li className={styles.features__list_item}>Personal design</li>
-							</div>
-							<div className={styles.features__list_block}>
-								<CheckFeatures />
-								<li className={styles.features__list_item}>
-									Work anywhere in&nbsp;the world
-								</li>
-							</div>
+							{featuresContent.map((item, i) => {
+								return (
+									<div key={i} className={styles.features__list_block}>
+										<CheckFeatures />
+										<li className={styles.features__list_item}>{item.text}</li>
+									</div>
+								)
+							})}
 						</ul>
 					</div>
 				</div>

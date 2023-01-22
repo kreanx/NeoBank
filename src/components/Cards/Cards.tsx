@@ -1,11 +1,9 @@
 import Container from '../../ui-kit/Container/Container'
 import styles from './Cards.module.scss'
-import card1 from '../../img/cards/cardimage_1.jpg'
-import card2 from '../../img/cards/cardimage_2.jpg'
-import card3 from '../../img/cards/cardimage_3.jpg'
-import card4 from '../../img/cards/cardimage_4.jpg'
 import { Button } from '../../ui-kit/Button/Button'
 import { Link } from 'react-router-dom'
+import { routes } from 'services/routes'
+import cardContent from './Content'
 
 const Cards: React.FC = () => {
 	return (
@@ -16,7 +14,7 @@ const Cards: React.FC = () => {
 						<h1 className={styles.cards__title}>
 							Choose the design you like and apply for card right now
 						</h1>
-						<Link to={'/loan'}>
+						<Link to={routes.loan}>
 							<Button
 								label="Choose the card"
 								customStyle={styles.cards__button}
@@ -24,18 +22,13 @@ const Cards: React.FC = () => {
 						</Link>
 					</div>
 					<div className={styles.cards__block}>
-						<div className={styles.cards__block_card}>
-							<img src={card1} alt="card1" />
-						</div>
-						<div className={styles.cards__block_card}>
-							<img src={card2} alt="card2" />
-						</div>
-						<div className={styles.cards__block_card}>
-							<img src={card3} alt="card3" />
-						</div>
-						<div className={styles.cards__block_card}>
-							<img src={card4} alt="card4" />
-						</div>
+						{cardContent.map((item, i) => {
+							return (
+								<div key={i} className={styles.cards__block_card}>
+									<img src={item.img} alt="card" />
+								</div>
+							)
+						})}
 					</div>
 				</div>
 			</Container>

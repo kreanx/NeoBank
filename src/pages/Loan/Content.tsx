@@ -1,4 +1,4 @@
-const howToCardContent = [
+export const howToCardContent = [
 	{
 		count: '1',
 		text: 'Fill out an online application - you do not need to visit the bank',
@@ -12,5 +12,3 @@ const howToCardContent = [
 		text: 'The bank will deliver the card free of charge, wherever convenient, to your city',
 	},
 ]
-
-export default howToCardContent

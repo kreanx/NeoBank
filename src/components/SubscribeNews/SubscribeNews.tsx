@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
 import subscribeNews from 'services/api/subscribeNews'
 
-const SunscribeNews: React.FC = () => {
+const SubscribeNews: React.FC = () => {
 	const [value, setValue] = useState<string>('')
 	const [isSubscribed, setSubscribed] = useState<boolean>(false)
 
@@ -66,4 +66,4 @@ const SunscribeNews: React.FC = () => {
 	)
 }
 
-export default SunscribeNews
+export default SubscribeNews

@@ -4,19 +4,16 @@ import styles from './Prescoring.module.scss'
 import clsx from 'clsx'
 import FormError from 'img/tsIcons/FormError'
 import { Button } from 'ui-kit/Button/Button'
-import * as Yup from 'yup'
 import FormSuccess from 'img/tsIcons/FormSuccess'
 import { useState } from 'react'
 import Loader from '../../ui-kit/Loader/Loader'
 import PrescoringField from './PrescoringField/PrescoringField'
 import Content from './Content'
+import { PrescoringSchema, maxLengthHandler } from './Validation'
 
 const Prescoring: React.FC = () => {
 	const [loading, isLoading] = useState<boolean>(false)
-	const [amount, setAmount] = useState<string>('0')
-
-	const age = 18
-	const year = 100
+	const [amount, setAmount] = useState<string>('15000')
 
 	const amountHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setAmount(
@@ -24,40 +21,6 @@ const Prescoring: React.FC = () => {
 		)
 	}
 
-	const checkAge = () => {
-		const now = new Date()
-		return new Date(now.setFullYear(now.getFullYear() - age))
-	}
-
-	const validTime = () => {
-		const now = new Date()
-		return new Date(now.setFullYear(now.getFullYear() - year))
-	}
-
-	const SignupSchema = Yup.object().shape({
-		firstName: Yup.string().required('Required'),
-		lastName: Yup.string().required('Required'),
-		middleName: Yup.string().min(2, 'Too Short!').max(20, 'Too Long!'),
-		term: Yup.string().required('Required'),
-		birthdate: Yup.date()
-			.min(validTime(), 'Please enter a valid date')
-			.max(checkAge(), 'You must be at least 18 years old!')
-			.required('Required')
-			.typeError('Please enter a valid date'),
-		passportSeries: Yup.number()
-			.required('Required')
-			.min(1000, 'Passport series must be 4 digits minimum!')
-			.typeError('Passport series must be only in digits!'),
-		passportNumber: Yup.number()
-			.required('Required')
-			.min(100000, 'Passport number must be 6 digits minimum!')
-			.typeError('Passport number must be only in digits!'),
-		email: Yup.string().email('Invalid email').required('Required'),
-		amount: Yup.number()
-			.min(15000, 'Minimum amount - 15 000!')
-			.max(600000, 'Maximum amount - 600 000!')
-			.typeError('Amount must be only in digits!'),
-	})
 	return (
 		<>
 			<Formik
@@ -95,7 +58,7 @@ const Prescoring: React.FC = () => {
 							alert('Failed to send request!')
 						})
 				}}
-				validationSchema={SignupSchema}
+				validationSchema={PrescoringSchema}
 			>
 				{(props) => {
 					const {
@@ -128,9 +91,10 @@ const Prescoring: React.FC = () => {
 													<Field
 														id="amount"
 														placeholder="15000 - 600000"
-														type="text"
+														type="number"
 														value={values.amount}
 														onChange={(e) => {
+															maxLengthHandler(e, e.target.maxLength)
 															amountHandler(e)
 															handleChange(e)
 														}}
@@ -183,6 +147,8 @@ const Prescoring: React.FC = () => {
 													options={item.options}
 													required={item.required}
 													maxLength={item.maxLength}
+													isDate={item.isDate}
+													isOnlyDigits={item.isOnlyDigits}
 												/>
 											)
 										})}
