@@ -2,11 +2,11 @@ import { Field } from 'formik'
 import FormError from 'img/tsIcons/FormError'
 import FormSuccess from 'img/tsIcons/FormSuccess'
 import clsx from 'clsx'
-import IPrescoringField from './types'
-import { maxLengthHandler } from '../Validation'
+import { maxLengthHandler } from './Validation'
+import styles from './PrescoringField.module.scss'
+import { IPrescoringField } from './types'
 
 const PrescoringField: React.FC<IPrescoringField> = ({
-	styles,
 	handleChange,
 	handleBlur,
 	errors,
@@ -20,10 +20,12 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 	maxLength,
 	isOnlyDigits,
 	isDate,
+	customHandler,
+	wrapperStyle,
 }) => {
 	if (!options && !isDate)
 		return (
-			<div className={styles.form__wrapper}>
+			<div className={clsx(styles.form__wrapper, wrapperStyle)}>
 				<label htmlFor={name} className={styles.form__label}>
 					{label}
 					{required ? (
@@ -42,6 +44,9 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 							maxLengthHandler(e, maxLength)
 							handleChange(e)
+							if (customHandler) {
+								customHandler(e)
+							}
 						}}
 						onBlur={handleBlur}
 						maxLength={maxLength}
@@ -76,7 +81,7 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 		}
 
 		return (
-			<div className={styles.form__wrapper}>
+			<div className={clsx(styles.form__wrapper, wrapperStyle)}>
 				<label htmlFor={name} className={styles.form__label}>
 					{label}
 					{required ? (
@@ -113,7 +118,7 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 
 	if (options) {
 		return (
-			<div className={styles.form__wrapper}>
+			<div className={clsx(styles.form__wrapper, wrapperStyle)}>
 				<label htmlFor={name} className={styles.form__label}>
 					{label}
 					{required ? (

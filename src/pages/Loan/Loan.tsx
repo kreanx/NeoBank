@@ -4,8 +4,25 @@ import LoanForm from 'components/Prescoring/Prescoring'
 import Container from 'ui-kit/Container/Container'
 import Tabs from 'components/Tabs/Tabs'
 import styles from './Loan.module.scss'
+import Offers from '../../components/Offers/Offers'
+import PreliminaryConfirmed from 'components/PreliminaryConfirmed/PreliminaryConfirmed'
+import { useAppSelector } from 'hook'
 
 const Loan: React.FC = () => {
+	const state = useAppSelector((state) => state.mainStepReducer.current)
+
+	const templates = [
+		{
+			element: <LoanForm />,
+		},
+		{
+			element: <Offers />,
+		},
+		{
+			element: <PreliminaryConfirmed />,
+		},
+	]
+
 	return (
 		<>
 			<DigitalCard />
@@ -32,7 +49,7 @@ const Loan: React.FC = () => {
 					</div>
 				</Container>
 			</div>
-			<LoanForm />
+			{templates[state].element}
 		</>
 	)
 }

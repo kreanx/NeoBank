@@ -1,0 +1,56 @@
+@import 'global/global.scss';
+
+.checkbox {
+    &__label {
+        position: relative;
+        display: flex;
+        cursor: pointer;
+        gap: 13px;
+        align-items: center;
+    }
+
+    &__text {
+        font-weight: var(--fw_400);
+        font-size: var(--fz_16);
+        line-height: 112%;
+        color: var(--grey_form);
+        user-select: none;
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+    }
+
+    &__input {
+        opacity: 0;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        top: 0;
+        left: 0;
+    }
+
+    &__checkmark {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        transition: .2s opacity;
+        border: 1px solid var(--grey_currency);
+        border-radius: 2px;
+
+        svg {
+            opacity: 0;
+        }
+    }
+}
+
+.checkbox__label input:checked~.checkbox__checkmark {
+    svg {
+        opacity: 1;
+    }
+}

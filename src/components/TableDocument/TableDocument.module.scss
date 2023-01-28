@@ -1,0 +1,74 @@
+@import 'global/global.scss';
+
+.table {
+    margin-top: 24px;
+
+    &__wrapper {
+        background: var(--white);
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 28px;
+        padding: 32px;
+    }
+
+    &__step {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: 100%;
+        color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+    }
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_30);
+        color: var(--black_exchange);
+        display: inline-block;
+        margin-right: 120px;
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+        }
+    }
+
+    &__bar {
+        margin-top: 44px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__deny {
+        background: rgba(217, 55, 55, 0.8);
+        border-color: rgba(217, 55, 55, 0.8);
+        border-radius: 8px;
+        padding: 12px 25px;
+        border: none;
+    }
+
+    &__submit {
+        padding: 12px 25px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    &__checkbox {
+        margin-left: auto;
+        margin-right: 40px;
+        text-align: end;
+
+        @include desktop {
+            margin-right: 20px;
+        }
+
+        @include smallDesktop {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+}

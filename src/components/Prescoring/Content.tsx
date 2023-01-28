@@ -1,4 +1,4 @@
-const Content = [
+const prescoringContent = [
 	{
 		label: 'Your last name',
 		name: 'lastName',
@@ -56,4 +56,4 @@ const Content = [
 	},
 ]
 
-export default Content
+export default prescoringContent

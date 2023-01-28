@@ -1,0 +1,81 @@
+export const applicationIdBaseContent = [
+	{
+		label: 'Whats your gender',
+		name: 'gender',
+		options: ['male', 'female'],
+		required: true,
+	},
+	{
+		label: 'Your marital status',
+		name: 'maritalStatus',
+		options: ['married', 'divorced', 'single', 'widow / widower'],
+		required: true,
+	},
+	{
+		label: 'Your number of dependents',
+		name: 'dependentAmount',
+		options: ['1', '2', '3'],
+		required: true,
+	},
+	{
+		label: 'Date of issue of the passport',
+		name: 'passportIssueDate',
+		placeHolder: 'Select Date and Time',
+		required: true,
+		maxLength: 4,
+		isDate: true,
+	},
+	{
+		label: 'Division code',
+		name: 'passportIssueBranch',
+		placeHolder: '000000',
+		required: true,
+		maxLength: 6,
+		isOnlyDigits: true,
+	},
+]
+export const applicationIdEmploymentContent = [
+	{
+		label: 'Your employment status',
+		name: 'employmentStatus',
+		options: ['unemployed', 'self employed', 'employed', 'business owner'],
+		required: true,
+	},
+	{
+		label: 'Your employer INN',
+		name: 'employerINN',
+		placeHolder: '000000000000',
+		required: true,
+		maxLength: 12,
+		isOnlyDigits: true,
+	},
+	{
+		label: 'Your salary',
+		name: 'salary',
+		placeHolder: 'For example 100 000',
+		required: true,
+		isOnlyDigits: true,
+	},
+	{
+		label: 'Your position',
+		name: 'position',
+		options: ['worker', 'mid manager', 'single', 'top manager', 'owner'],
+		required: true,
+	},
+	{
+		label: 'Your work experience total',
+		name: 'workExperienceTotal',
+		placeHolder: 'For example 10',
+		required: true,
+		maxLength: 2,
+		isOnlyDigits: true,
+	},
+	{
+		label: 'Your work experience current',
+		name: 'workExperienceCurrent',
+		placeHolder: 'For example 2',
+		required: true,
+		maxLength: 2,
+		isOnlyDigits: true,
+	},
+]

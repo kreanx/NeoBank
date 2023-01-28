@@ -1,0 +1,57 @@
+@import 'global/global.scss';
+
+.confirmation {
+    margin-top: 40px;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        justify-content: center;
+        align-items: center;
+        @include desktop {
+            gap: 26px;
+        }
+    }
+
+    &__img {
+        img {
+            max-width: 150px;
+            height: 100%;
+        }
+    }
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_30);
+        line-height: var(--lh_112);
+        letter-spacing: 0.02em;
+        color: var(--black_subtitle);
+        text-align: center;
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+        }
+    }
+
+    &__subtitle {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: var(--lh_112);
+        color: var(--grey);
+        text-align: center;
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+        }
+    }
+
+}

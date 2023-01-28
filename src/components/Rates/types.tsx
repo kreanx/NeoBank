@@ -1,6 +1,6 @@
-interface IratesContent {
+interface IRatesContent {
 	title: string
 	text: string
 }
 
-export default IratesContent
+export default IRatesContent

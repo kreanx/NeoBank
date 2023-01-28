@@ -1,0 +1,76 @@
+@import 'global/global';
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    position: fixed;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__window {
+        background: var(--white);
+        padding: 16px;
+    }
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_16);
+        line-height: 147.4%;
+        letter-spacing: 0.02em;
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+    }
+
+    &__text {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: 147.4%;
+        margin-top: 16px;
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+    }
+
+    &__firstbtn {
+        padding: 12px 25px;
+        border-radius: 8px;
+    }
+
+    &__secondbtn {
+        background: rgba(217, 55, 55, 0.8);
+        border: none;
+        border-radius: 8px;
+        padding: 12px 25px;
+        outline: none;
+    }
+
+    &__btns {
+        margin-top: 35px;
+        display: flex;
+        justify-content: end;
+        gap: 40px;
+
+        @include desktop {
+            margin-top: 25px;
+            gap: 30px;
+        }
+    }
+
+    &__close {
+        cursor: pointer;
+    }
+}

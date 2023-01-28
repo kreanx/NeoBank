@@ -8,18 +8,9 @@ const checkAge = () => {
 	return new Date(now.setFullYear(now.getFullYear() - age))
 }
 
-const validTime = () => {
+export const validTime = () => {
 	const now = new Date()
 	return new Date(now.setFullYear(now.getFullYear() - year))
-}
-
-export const maxLengthHandler = (
-	e: React.ChangeEvent<HTMLInputElement>,
-	maxLength: number
-) => {
-	if (e.target.value.length > maxLength) {
-		e.target.value = e.target.value.slice(0, maxLength)
-	}
 }
 
 export const PrescoringSchema = Yup.object().shape({
@@ -36,11 +27,11 @@ export const PrescoringSchema = Yup.object().shape({
 		.typeError('Please enter a valid date'),
 	passportSeries: Yup.number()
 		.required('Cant be empty!')
-		.min(1000, 'Passport series must be 4 digits minimum!')
+		.min(1000, 'Passport series must be 4 digits!')
 		.typeError('Passport series must be only in digits!'),
 	passportNumber: Yup.number()
 		.required('Cant be empty!')
-		.min(100000, 'Passport number must be 6 digits minimum!')
+		.min(100000, 'Passport number must be 6 digits!')
 		.typeError('Passport number must be only in digits!'),
 	email: Yup.string().email('Invalid email').required('Cant be empty!'),
 	amount: Yup.number()

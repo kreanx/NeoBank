@@ -11,7 +11,9 @@ h6 {
 }
 
 p,
-span {
+span,
+li,
+ul {
     margin: 0;
     padding: 0;
 }

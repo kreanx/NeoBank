@@ -1,0 +1,59 @@
+@import 'global/global.scss';
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 75px;
+
+    @include desktop {
+        margin-top: 60px;
+    }
+
+    &__tr {
+        width: 100%;
+    }
+
+    &__th {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_12);
+        letter-spacing: 0.02em;
+        color: var(--grey);
+        border-bottom: 1px solid var(--table);
+        cursor: pointer;
+        user-select: none;
+    }
+
+    &__td {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_12);
+        line-height: 147.4%;
+        letter-spacing: 0.02em;
+        color: var(--black_navbar);
+        margin-right: 20px;
+        width: 200px;
+        height: 40px;
+        border-bottom: 1px solid var(--table);
+
+        @include desktop {
+            max-width: 100%;
+        }
+
+    }
+
+    &__thead {
+        text-align: left;
+        width: 200px;
+        height: 40px;
+
+    }
+
+    &__arrow {
+        display: inline-block;
+        margin-left: 5px;
+        &_desc {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

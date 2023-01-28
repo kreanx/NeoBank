@@ -1,19 +1,21 @@
 import Container from 'ui-kit/Container/Container'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form } from 'formik'
 import styles from './Prescoring.module.scss'
-import clsx from 'clsx'
-import FormError from 'img/tsIcons/FormError'
 import { Button } from 'ui-kit/Button/Button'
-import FormSuccess from 'img/tsIcons/FormSuccess'
 import { useState } from 'react'
 import Loader from '../../ui-kit/Loader/Loader'
-import PrescoringField from './PrescoringField/PrescoringField'
-import Content from './Content'
-import { PrescoringSchema, maxLengthHandler } from './Validation'
+import PrescoringField from '../../ui-kit/PrescoringField/PrescoringField'
+import prescoringContent from './Content'
+import { PrescoringSchema } from './Validation'
+import applyPrescoringForm from 'services/api/applyPrescoringForm'
+import { useAppDispatch, useAppSelector } from 'hook'
+import { mainDefaultStep, mainNextStep } from 'store/slices/mainStepSlice'
 
 const Prescoring: React.FC = () => {
-	const [loading, isLoading] = useState<boolean>(false)
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [amount, setAmount] = useState<string>('15000')
+	const state = useAppSelector((state) => state.mainStepReducer.current)
+	const dispatch = useAppDispatch()
 
 	const amountHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setAmount(
@@ -36,42 +38,19 @@ const Prescoring: React.FC = () => {
 					passportNumber: '',
 				}}
 				onSubmit={async (values) => {
-					isLoading(true)
-					await fetch('/application ', {
-						method: 'POST',
-						body: JSON.stringify(values),
-					})
-						.then((response) => {
-							isLoading(true)
-							if (!response.ok) {
-								return Promise.reject('Failed to send request!')
-							}
-							response.json()
-						})
-						.then((data) => {
-							isLoading(false)
-							console.log('You are sent request:', data)
-						})
-						.catch((error) => {
-							isLoading(false)
-							console.error('Error:', error)
-							alert('Failed to send request!')
-						})
+					setIsLoading(true)
+					if (state === 2) {
+						dispatch(mainDefaultStep())
+					}
+					applyPrescoringForm(values, setIsLoading)
+					dispatch(mainNextStep())
 				}}
 				validationSchema={PrescoringSchema}
 			>
 				{(props) => {
-					const {
-						values,
-						touched,
-						errors,
-						isSubmitting,
-						handleChange,
-						handleBlur,
-						handleSubmit,
-					} = props
+					const { isSubmitting, handleChange, handleBlur, handleSubmit } = props
 					return (
-						<div id="form">
+						<div id="scroll">
 							<Container>
 								<Form onSubmit={handleSubmit} className={styles.form}>
 									<div className={styles.form__top}>
@@ -82,46 +61,18 @@ const Prescoring: React.FC = () => {
 												</h2>
 												<div className={styles.form__step}>Step 1 of 5</div>
 											</div>
-											<div className={styles.form__block_input}>
-												<label htmlFor="amount" className={styles.form__label}>
-													Select amount
-													<span className={styles.form__label_required}></span>
-												</label>
-												<div className={styles.form__field}>
-													<Field
-														id="amount"
-														placeholder="15000 - 600000"
-														type="number"
-														value={values.amount}
-														onChange={(
-															e: React.ChangeEvent<HTMLInputElement>
-														) => {
-															maxLengthHandler(e, e.target.maxLength)
-															amountHandler(e)
-															handleChange(e)
-														}}
-														onBlur={handleBlur}
-														maxLength={6}
-														className={clsx(styles.form__input, {
-															[styles.form__input_error]:
-																errors.amount && touched.amount,
-														})}
-													/>
-													<div className={styles.form__label_icon}>
-														{errors.amount && touched.amount ? (
-															<FormError />
-														) : null}
-														{!errors.amount && touched.amount ? (
-															<FormSuccess />
-														) : null}
-													</div>
-												</div>
-												{errors.amount && touched.amount && (
-													<div className={styles.form__input_errortext}>
-														{errors.amount}
-													</div>
-												)}
-											</div>
+											<PrescoringField
+												{...props}
+												handleBlur={handleBlur}
+												handleChange={handleChange}
+												label={'Select amount'}
+												name={'amount'}
+												placeHolder={'5000 - 600000'}
+												required={false}
+												isOnlyDigits={true}
+												maxLength={6}
+												customHandler={amountHandler}
+											/>
 										</div>
 										<div className={styles.form__divider}></div>
 										<div className={styles.form__block}>
@@ -135,7 +86,7 @@ const Prescoring: React.FC = () => {
 										Contact Information
 									</h3>
 									<div className={styles.form__inputs}>
-										{Content.map((item, i) => {
+										{prescoringContent.map((item, i) => {
 											return (
 												<PrescoringField
 													{...props}
@@ -145,7 +96,6 @@ const Prescoring: React.FC = () => {
 													label={item.label}
 													name={item.name}
 													placeHolder={item.placeHolder}
-													styles={styles}
 													options={item.options}
 													required={item.required}
 													maxLength={item.maxLength}
@@ -163,7 +113,7 @@ const Prescoring: React.FC = () => {
 											customStyle={styles.form__btn}
 										/>
 									</div>
-									{loading ? <Loader fullsize={true} /> : ''}
+									{isLoading ? <Loader fullsize={true} /> : ''}
 								</Form>
 							</Container>
 						</div>

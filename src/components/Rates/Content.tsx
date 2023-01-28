@@ -1,6 +1,6 @@
-import IratesContent from './types'
+import IRatesContent from './types'
 
-const ratesContent: IratesContent[] = [
+const ratesContent: IRatesContent[] = [
 	{
 		title: 'Card currency',
 		text: 'Rubles, dollars, euro',

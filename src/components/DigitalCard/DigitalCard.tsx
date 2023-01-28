@@ -3,8 +3,57 @@ import card from '../../img/loan/card.png'
 import Container from 'ui-kit/Container/Container'
 import { Button } from 'ui-kit/Button/Button'
 import Tooltip from 'ui-kit/Tooltip/Tooltip'
+import { useEffect, useState } from 'react'
+import { useAppSelector } from 'hook'
+import { Link } from 'react-router-dom'
+// import { routes } from 'services/routes'
 
 const DigitalCard: React.FC = () => {
+	const mainState = useAppSelector((state) => state.mainStepReducer.current)
+	const additionalState = useAppSelector(
+		(state) => state.additionalStepReducer.current
+	)
+
+	const [label, setLabel] = useState<string>('Apply for card')
+	const [link, setLink] = useState<string>('')
+
+	useEffect(() => {
+		switch (mainState) {
+			case 0:
+				setLabel('Apply for card')
+				break
+			case 1:
+				setLabel('Choose an offer')
+				break
+			case 2:
+				setLabel('Continue registration')
+				break
+		}
+	}, [mainState])
+
+	useEffect(() => {
+		console.log(additionalState)
+
+		switch (additionalState) {
+			case 0:
+				// setLink(routes.applicationId)
+				setLink('1')
+				break
+			case 1:
+				// setLink(routes.table)
+				setLink('1/document')
+				break
+			case 2:
+				// setLink(routes.document)
+				setLink('1/document/sign')
+				break
+			case 3:
+				// setLink(routes.code)
+				setLink('1/code')
+				break
+		}
+	}, [additionalState])
+
 	return (
 		<section className={styles.digital}>
 			<Container>
@@ -51,12 +100,15 @@ const DigitalCard: React.FC = () => {
 								</div>
 							</div>
 						</div>
-						<a href="#form" className={styles.digital__anchor}>
-							<Button
-								label="Apply for card"
-								customStyle={styles.digital__btn}
-							/>
-						</a>
+						{mainState < 2 ? (
+							<a href="#scroll" className={styles.digital__anchor}>
+								<Button label={label} customStyle={styles.digital__btn} />
+							</a>
+						) : (
+							<Link to={link} className={styles.digital__anchor}>
+								<Button label={label} customStyle={styles.digital__btn} />
+							</Link>
+						)}
 					</div>
 					<div className={styles.digital__block}>
 						<div className={styles.digital__img}>

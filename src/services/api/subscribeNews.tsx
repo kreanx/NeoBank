@@ -1,6 +1,12 @@
+import { Dispatch } from 'react'
+import { SetStateAction } from 'react'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
 
-async function subscribeNews(setSubscribed, value: string, setValue) {
+async function subscribeNews(
+	setSubscribed: Dispatch<SetStateAction<boolean>>,
+	value: string,
+	setValue: Dispatch<SetStateAction<string>>
+) {
 	await fetch('/email', {
 		method: 'POST',
 		body: JSON.stringify(value),

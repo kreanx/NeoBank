@@ -8,12 +8,14 @@ const Button: React.FC<IButton> = ({
 	customStyle,
 	children,
 	type,
+	onClick,
 }) => {
 	return (
 		<button
 			type={type}
 			disabled={disabled}
 			className={clsx(styles.button, customStyle)}
+			onClick={onClick}
 		>
 			{children}
 			<span className={styles.button__text}>{label}</span>
