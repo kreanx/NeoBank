@@ -7,14 +7,21 @@ import Loader from '../../ui-kit/Loader/Loader'
 import PrescoringField from '../../ui-kit/PrescoringField/PrescoringField'
 import prescoringContent from './Content'
 import { PrescoringSchema } from './Validation'
-import applyPrescoringForm from 'services/api/applyPrescoringForm'
-import { useAppDispatch, useAppSelector } from 'hook'
-import { mainDefaultStep, mainNextStep } from 'store/slices/mainStepSlice'
+import { applyPrescoringForm } from 'services/api/api'
+import { useAppDispatch } from 'hook'
+import { mainNextStep } from 'store/slices/mainStepSlice'
+import localStorageHandler from 'services/localStorage/localStorageHandler'
+import { SetStateAction } from 'react'
+import { Dispatch } from 'react'
+
+export interface IPrescoring {
+	setStep: Dispatch<SetStateAction<number>>
+	setIsSended: Dispatch<SetStateAction<string>>
+}
 
 const Prescoring: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [amount, setAmount] = useState<string>('15000')
-	const state = useAppSelector((state) => state.mainStepReducer.current)
 	const dispatch = useAppDispatch()
 
 	const amountHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +34,7 @@ const Prescoring: React.FC = () => {
 		<>
 			<Formik
 				initialValues={{
-					amount: '15000',
+					amount: '150000',
 					lastName: '',
 					firstName: '',
 					middleName: '',
@@ -38,12 +45,15 @@ const Prescoring: React.FC = () => {
 					passportNumber: '',
 				}}
 				onSubmit={async (values) => {
+					const newValues = { ...values, term: values.term.replace(/\D/g, '') }
 					setIsLoading(true)
-					if (state === 2) {
-						dispatch(mainDefaultStep())
+
+					const data = await applyPrescoringForm(setIsLoading, newValues)
+
+					if (data) {
+						localStorageHandler('offers', 'set', JSON.stringify(data))
+						dispatch(mainNextStep())
 					}
-					applyPrescoringForm(values, setIsLoading)
-					dispatch(mainNextStep())
 				}}
 				validationSchema={PrescoringSchema}
 			>

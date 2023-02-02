@@ -1,9 +1,24 @@
 @import '../../global/global.scss';
 
 .form {
+
+
+
     &__field {
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='none' height='9' viewBox='0 0 14 9' width='14' xmlns='http://www.w3.org/2000/svg'><path d='M13 1L7 7L1 1' stroke='black' stroke-width='2' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-position-x: 93%;
+            background-position-y: 50%;
+        }
+
         display: flex;
         width: 100%;
+
+        option:first-child {
+            display: none;
+        }
     }
 
     &__input {
@@ -18,7 +33,6 @@
         color: var(--grey_currency);
         width: 100%;
         outline: none;
-
 
         @include desktop {
             font-size: var(--fz_14_m13);
@@ -35,7 +49,7 @@
             display: none;
             -webkit-appearance: none;
         }
-     
+
         &_error {
             border: 2px solid var(--orange_form);
         }
@@ -100,10 +114,13 @@
         }
     }
 
+
+
     &__wrapper {
         max-width: 300px;
     }
 }
+
 
 .btn {
     display: flex;

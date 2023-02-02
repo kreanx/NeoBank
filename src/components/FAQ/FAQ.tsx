@@ -1,5 +1,5 @@
 import styles from './FAQ.module.scss'
-import { AccordionContainer } from 'ui-kit/AccordionContainer/AccordionContainer'
+import { Accordion } from 'ui-kit/Accordion/Accordion'
 import { faqCard, faqCredit } from './Content'
 
 const FAQ: React.FC = () => {
@@ -7,11 +7,11 @@ const FAQ: React.FC = () => {
 		<div className={styles.faq}>
 			<div className={styles.faq__block}>
 				<h2 className={styles.faq__title}>Issuing and receiving a card</h2>
-				<AccordionContainer initialValue={0} accordionItems={faqCard} />
+				<Accordion initialValue={0} accordionItems={faqCard} />
 			</div>
 			<div className={styles.faq__block}>
 				<h2 className={styles.faq__title}>Using a credit card</h2>
-				<AccordionContainer accordionItems={faqCredit} />
+				<Accordion accordionItems={faqCredit} />
 			</div>
 		</div>
 	)

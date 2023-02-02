@@ -1,4 +1,4 @@
-import { IArticle } from '../../components/News/types'
+import { IArticle } from '../../components/News/News'
 
 async function getNews(render: (article?: IArticle) => void) {
 	const fetchNews: () => Promise<Response> = async () => {
@@ -17,8 +17,7 @@ async function getNews(render: (article?: IArticle) => void) {
 		})
 		.catch((error) => {
 			render()
-			// throw new Error('Error while fetch', error)
-			console.log(error)
+			console.error(`Failed to load news! Error status: ${error}`)
 		})
 }
 

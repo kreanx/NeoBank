@@ -1,7 +1,13 @@
 import styles from './Tooltip.module.scss'
-import TTooltip from './types'
 import { useState } from 'react'
 import clsx from 'clsx'
+
+interface TTooltip {
+	label: string
+	content: string
+	labelStyle?: string
+	contentStyle?: string
+}
 
 const Tooltip: React.FC<TTooltip> = ({
 	label,

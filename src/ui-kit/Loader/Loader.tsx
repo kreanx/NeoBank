@@ -1,6 +1,8 @@
 import styles from './Loader.module.scss'
-import ILoader from './types'
 import clsx from 'clsx'
+interface ILoader {
+	fullsize?: boolean
+}
 
 const Loader: React.FC<ILoader> = ({ fullsize }) => {
 	return (

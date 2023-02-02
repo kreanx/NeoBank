@@ -1,5 +1,9 @@
 import style from './Exchange.module.scss'
-import { IExchangeProps } from './types'
+
+export interface IExchangeProps {
+	currencyName: string
+	currencyAmount: string
+}
 
 const ExchangeItem: React.FC<IExchangeProps> = ({
 	currencyName,

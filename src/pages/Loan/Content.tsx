@@ -1,4 +1,4 @@
-export const howToCardContent = [
+export const guideContent = [
 	{
 		count: '1',
 		text: 'Fill out an online application - you do not need to visit the bank',

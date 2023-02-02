@@ -1,5 +1,12 @@
 import clsx from 'clsx'
-import ITabsButton from './types'
+interface ITabsButton {
+	style?: string
+	activeStyle: string
+	id: string
+	isActive: string
+	label: string
+	activeHandler: (id: string) => void
+}
 
 const TabsButton: React.FC<ITabsButton> = ({
 	style,

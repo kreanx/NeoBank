@@ -39,7 +39,7 @@
         align-items: center;
         top: 0;
         left: 0;
-        transition: .2s opacity;
+        transition: .2s all;
         border: 1px solid var(--grey_currency);
         border-radius: 2px;
 
@@ -53,4 +53,6 @@
     svg {
         opacity: 1;
     }
+
+    background: #3182CE;
 }

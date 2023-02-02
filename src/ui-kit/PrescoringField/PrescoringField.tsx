@@ -131,16 +131,14 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 					<Field
 						name={name}
 						id={name}
-						placeholder={placeHolder}
 						as="select"
-						value={values[name]}
 						onChange={handleChange}
 						onBlur={handleBlur}
 						className={clsx(styles.form__input, {
 							[styles.form__input_error]: errors[name] && touched[name],
 						})}
 					>
-						{options.map((option, i) => {
+						{[''].concat(options).map((option, i) => {
 							return (
 								<option key={i} value={option}>
 									{option}
@@ -148,10 +146,6 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 							)
 						})}
 					</Field>
-					<div className={styles.form__label_icon}>
-						{errors[name] && touched[name] ? <FormError /> : null}
-						{!errors[name] && touched[name] ? <FormSuccess /> : null}
-					</div>
 				</div>
 				{errors[name] && touched[name] && (
 					<div className={styles.form__input_errortext}>{errors[name]}</div>

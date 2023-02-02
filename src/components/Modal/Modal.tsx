@@ -1,6 +1,14 @@
 import { Button } from 'ui-kit/Button/Button'
 import styles from './Modal.module.scss'
-import { IModal } from './types'
+export interface IModal {
+	title: string
+	text: string
+	firstButton?: string
+	secondButton?: string
+	firstBtnHandler?: () => void
+	secondBtnHandler?: () => void
+	closeHandler?: () => void
+}
 
 const Modal: React.FC<IModal> = ({
 	text,

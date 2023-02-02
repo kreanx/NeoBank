@@ -6,13 +6,10 @@ import Tooltip from 'ui-kit/Tooltip/Tooltip'
 import { useEffect, useState } from 'react'
 import { useAppSelector } from 'hook'
 import { Link } from 'react-router-dom'
-// import { routes } from 'services/routes'
+import localStorageHandler from 'services/localStorage/localStorageHandler'
 
 const DigitalCard: React.FC = () => {
 	const mainState = useAppSelector((state) => state.mainStepReducer.current)
-	const additionalState = useAppSelector(
-		(state) => state.additionalStepReducer.current
-	)
 
 	const [label, setLabel] = useState<string>('Apply for card')
 	const [link, setLink] = useState<string>('')
@@ -28,31 +25,32 @@ const DigitalCard: React.FC = () => {
 			case 2:
 				setLabel('Continue registration')
 				break
+			default:
+				setLabel('Continue registration')
+				break
 		}
 	}, [mainState])
 
 	useEffect(() => {
-		console.log(additionalState)
+		const localId = JSON.parse(
+			localStorageHandler('application', 'get')
+		)?.applicationId
 
-		switch (additionalState) {
-			case 0:
-				// setLink(routes.applicationId)
-				setLink('1')
-				break
-			case 1:
-				// setLink(routes.table)
-				setLink('1/document')
-				break
+		switch (mainState) {
 			case 2:
-				// setLink(routes.document)
-				setLink('1/document/sign')
+				setLink(`${localId}`)
 				break
 			case 3:
-				// setLink(routes.code)
-				setLink('1/code')
+				setLink(`${localId}/document`)
+				break
+			case 4:
+				setLink(`${localId}/document/sign`)
+				break
+			case 5:
+				setLink(`${localId}/code`)
 				break
 		}
-	}, [additionalState])
+	}, [mainState])
 
 	return (
 		<section className={styles.digital}>

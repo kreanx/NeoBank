@@ -1,6 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import mainStepReducer from './slices/mainStepSlice'
-import additionalStepReducer from './slices/additionalStepSlice'
 import storage from 'redux-persist/lib/storage'
 import {
 	persistReducer,
@@ -18,7 +17,6 @@ const persistConfig = {
 }
 const rootReducer = combineReducers({
 	mainStepReducer: mainStepReducer,
-	additionalStepReducer: additionalStepReducer,
 })
 
 const persistedReducer = persistReducer<any, any>(persistConfig, rootReducer)

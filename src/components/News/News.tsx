@@ -2,9 +2,15 @@ import Slider from 'ui-kit/Slider/Slider'
 import Container from '../../ui-kit/Container/Container'
 import styles from './News.module.scss'
 import { useState, useEffect } from 'react'
-import { IArticle } from './types'
 import getNews from '../../services/api/getNews'
 import { IItem } from '../../ui-kit/Slider/types'
+
+export interface IArticle {
+	url: string
+	description: string
+	title: string
+	urlToImage: string
+}
 
 const News: React.FC = () => {
 	const [news, setNews] = useState<IItem[] | undefined[]>([])

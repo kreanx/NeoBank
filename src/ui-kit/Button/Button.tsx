@@ -1,6 +1,13 @@
 import styles from './Button.module.scss'
 import clsx from 'clsx'
-import { IButton } from './types'
+export interface IButton {
+	label: string
+	onClick?: () => void
+	disabled?: boolean
+	customStyle?: string
+	children?: React.ReactNode
+	type?: 'button' | 'submit' | 'reset'
+}
 
 const Button: React.FC<IButton> = ({
 	label,

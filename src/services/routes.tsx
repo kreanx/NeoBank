@@ -1,18 +1,18 @@
-import ApplicationId from 'components/ApplicationId/ApplicationId'
+import ApplicationId from 'pages/ScoringForm/ScoringForm'
 import Footer from 'components/Footer/Footer'
 import Header from 'components/Header/Header'
-import NotFound from 'components/NotFound/NotFound'
+import NotFound from 'pages/NotFound/NotFound'
 import Home from 'pages/Home/Home'
 import Loan from 'pages/Loan/Loan'
-import TableDocument from '../components/TableDocument/TableDocument'
+import TableDocument from '../pages/TablePage/TablePage'
 import {
 	createBrowserRouter,
 	createRoutesFromElements,
 	Outlet,
 	Route,
 } from 'react-router-dom'
-import SigningDocuments from '../components/SigningDocuments/SigningDocuments'
-import ConfirmationCode from '../components/ConfirmationCode/ConfirmationCode'
+import SigningDocuments from '../pages/SigningDocuments/SigningDocuments'
+import ConfirmationCode from '../pages/ConfirmationCode/ConfirmationCode'
 
 export const enum routes {
 	notFound = '/*',

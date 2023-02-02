@@ -1,6 +1,13 @@
-import { ICheckbox } from './types'
 import styles from './Checkbox.module.scss'
 import clsx from 'clsx'
+export interface ICheckbox {
+	checked: boolean
+	label?: string
+	name: string
+	value: string
+	onChange: () => void
+	customStyle?: string
+}
 
 const Checkbox: React.FC<ICheckbox> = ({
 	checked,
@@ -26,13 +33,13 @@ const Checkbox: React.FC<ICheckbox> = ({
 				})}
 			>
 				<svg
-					width="16"
-					height="13"
-					viewBox="0 0 16 13"
+					width="10"
+					height="9"
+					viewBox="0 0 10 9"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					<path d="M1 4L6.5 10.5L14.5 1" stroke="#0D0C0C" strokeWidth="2" />
+					<path d="M1 4L4 7L9 1" stroke="white" strokeWidth="2" />
 				</svg>
 			</div>
 			<span className={styles.checkbox__text}>{label}</span>

@@ -1,0 +1,68 @@
+@import 'global/global.scss';
+
+.PinCode {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    &__error {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: 100%;
+        color: var(--orange_form);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+    }
+
+    &__input {
+        display: flex;
+        gap: 16px;
+
+        &_item {
+            background: var(--bgcolor);
+            border: 0.5px solid var(--grey_currency);
+            border-radius: 8px;
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_20);
+            line-height: 112%;
+            letter-spacing: 0.02em;
+            color: var(--black_exchange);
+            outline: none;
+            @include desktop {
+                font-size: var(--fz_20_m13);
+            }
+
+            &:not(:placeholder-shown) {
+                border: 1.5px solid var(--blue_light);
+            }
+
+            &:focus {
+                border: none;
+                border: 1.5px solid var(--blue_light);
+
+                &:placeholder {
+                    border: none;
+                    display: none;
+                }
+            }
+
+            &::placeholder {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                border: 2px solid var(--grey_currency);
+                color: var(--bgcolor);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}

@@ -1,11 +1,11 @@
 import DigitalCard from 'components/DigitalCard/DigitalCard'
-import { howToCardContent } from 'pages/Loan/Content'
+import { guideContent } from 'pages/Loan/Content'
 import LoanForm from 'components/Prescoring/Prescoring'
 import Container from 'ui-kit/Container/Container'
 import Tabs from 'components/Tabs/Tabs'
 import styles from './Loan.module.scss'
 import Offers from '../../components/Offers/Offers'
-import PreliminaryConfirmed from 'components/PreliminaryConfirmed/PreliminaryConfirmed'
+import PreliminaryConfirmed from 'components/Prescoring/PreliminaryConfirmed/PreliminaryConfirmed'
 import { useAppSelector } from 'hook'
 
 const Loan: React.FC = () => {
@@ -27,20 +27,20 @@ const Loan: React.FC = () => {
 		<>
 			<DigitalCard />
 			<Tabs />
-			<div className={styles.howto}>
+			<div className={styles.guide}>
 				<Container>
-					<div className={styles.howto__wrapper}>
-						<h2 className={styles.howto__title}>How to get a card</h2>
-						<div className={styles.howto__blocks}>
-							{howToCardContent.map((item, i) => {
+					<div className={styles.guide__wrapper}>
+						<h2 className={styles.guide__title}>How to get a card</h2>
+						<div className={styles.guide__blocks}>
+							{guideContent.map((item, i) => {
 								return (
-									<div key={i} className={styles.howto__block}>
-										<div className={styles.howto__block_top}>
-											<div className={styles.howto__count}>{item.count}</div>
-											<div className={styles.howto__divider}></div>
+									<div key={i} className={styles.guide__block}>
+										<div className={styles.guide__block_top}>
+											<div className={styles.guide__count}>{item.count}</div>
+											<div className={styles.guide__divider}></div>
 										</div>
-										<div className={styles.howto__block_content}>
-											<p className={styles.howto__text}>{item.text}</p>
+										<div className={styles.guide__block_content}>
+											<p className={styles.guide__text}>{item.text}</p>
 										</div>
 									</div>
 								)
@@ -49,7 +49,7 @@ const Loan: React.FC = () => {
 					</div>
 				</Container>
 			</div>
-			{templates[state].element}
+			{state < 3 ? templates[state].element : templates[2].element}
 		</>
 	)
 }

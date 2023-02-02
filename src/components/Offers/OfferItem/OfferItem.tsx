@@ -1,25 +1,68 @@
 import styles from './OfferItem.module.scss'
-import { IOfferItem } from './types'
 import offerImg from 'img/loan/offerBox.png'
 import { Button } from 'ui-kit/Button/Button'
 import FormSuccess from 'img/tsIcons/FormSuccess'
 import FormError from 'img/tsIcons/FormError'
 import { useAppDispatch } from 'hook'
 import { mainNextStep } from 'store/slices/mainStepSlice'
+import localStorageHandler from 'services/localStorage/localStorageHandler'
+import { Dispatch, SetStateAction } from 'react'
+
+export interface IOfferItem {
+	requestedAmount: string
+	totalAmount: string
+	time: string
+	monthlyPayment: string
+	rate: string
+	isInsuranceEnabled: boolean
+	isSalaryClient: boolean
+	applicationId: number
+	applyOffer: (
+		setLoading: Dispatch<SetStateAction<boolean>>,
+		data: any
+	) => Promise<any>
+	setIsLoading: Dispatch<SetStateAction<boolean>>
+}
 
 const OfferItem: React.FC<IOfferItem> = ({
-	isInsurance,
-	isSalary,
-	monthly,
+	applicationId,
 	rate,
 	time,
-	total,
-	requested,
-	id,
+	isInsuranceEnabled,
+	isSalaryClient,
+	monthlyPayment,
+	requestedAmount,
+	totalAmount,
 	applyOffer,
 	setIsLoading,
 }) => {
 	const dispatch = useAppDispatch()
+
+	const formatMoney = (amount: number) => {
+		return new Intl.NumberFormat('ru-RU').format(amount)
+	}
+
+	async function submitOffer() {
+		setIsLoading(true)
+
+		const selectedOffer = {
+			applicationId,
+			rate,
+			term: time.replace(/\D/g, ''),
+			isInsuranceEnabled,
+			isSalaryClient,
+			monthlyPayment,
+			requestedAmount,
+			totalAmount,
+		}
+		const data = await applyOffer(setIsLoading, selectedOffer)
+
+		if (data) {
+			localStorageHandler('offers', 'remove')
+			localStorageHandler('application', 'set', JSON.stringify(selectedOffer))
+			dispatch(mainNextStep())
+		}
+	}
 
 	return (
 		<div className={styles.offerItem}>
@@ -28,29 +71,29 @@ const OfferItem: React.FC<IOfferItem> = ({
 			</div>
 			<ul className={styles.offerItem__fields}>
 				<li className={styles.offerItem__field}>
-					Requested amount: {requested}
+					Requested amount: {formatMoney(+requestedAmount)} ₽
 				</li>
-				<li className={styles.offerItem__field}>Total amount: {total}</li>
+				<li className={styles.offerItem__field}>
+					Total amount: {formatMoney(+totalAmount)} ₽
+				</li>
 				<li className={styles.offerItem__field}>{time}</li>
-				<li className={styles.offerItem__field}>Monthly payment: {monthly}</li>
-				<li className={styles.offerItem__field}>Your rate: {rate}</li>
+				<li className={styles.offerItem__field}>
+					Monthly payment: {formatMoney(+monthlyPayment)} ₽
+				</li>
+				<li className={styles.offerItem__field}>Your rate: {rate} %</li>
 				<li className={styles.offerItem__field}>
 					Insurance included
-					{isInsurance ? <FormSuccess /> : <FormError />}
+					{isInsuranceEnabled ? <FormSuccess /> : <FormError />}
 				</li>
 				<li className={styles.offerItem__field}>
 					Salary client
-					{isSalary ? <FormSuccess /> : <FormError />}
+					{isSalaryClient ? <FormSuccess /> : <FormError />}
 				</li>
 			</ul>
 			<Button
 				label="Select"
 				customStyle={styles.offerItem__button}
-				onClick={() => {
-					setIsLoading(true)
-					applyOffer(id, setIsLoading)
-					dispatch(mainNextStep())
-				}}
+				onClick={submitOffer}
 			/>
 		</div>
 	)

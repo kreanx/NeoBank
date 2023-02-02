@@ -24,7 +24,9 @@ async function getCurrencies(
 				}
 				setCurrency((prev) => [...prev, newObj])
 			})
-			.catch((error) => console.error(error))
+			.catch((error) =>
+				alert(`Failed to load currency! Error status: ${error}`)
+			)
 	})
 }
 

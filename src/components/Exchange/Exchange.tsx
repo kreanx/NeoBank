@@ -3,9 +3,12 @@ import styles from './Exchange.module.scss'
 import townhall from '../../img/home/townhall.png'
 import { useState, useEffect } from 'react'
 import ExchangeItem from './ExchangeItem/ExchangeItem'
-import { IItemProps } from './types'
 import getCurrencies from 'services/api/getСurrencies'
 
+interface IItemProps {
+	currencyAmount: string
+	currencyName: string
+}
 const Exchange: React.FC = () => {
 	const currencyList: string[] = ['USD', 'EUR', 'SGD', 'JPY', 'CNH', 'HKD']
 	const toCurrency = 'RUB'
