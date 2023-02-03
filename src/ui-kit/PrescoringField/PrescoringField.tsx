@@ -66,19 +66,9 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 		)
 
 	if (isDate) {
-		let validDateLength = ''
+		const zeroAmount = [...new Array(maxLength).fill('0')].join('')
 
-		switch (maxLength) {
-			case 4:
-				validDateLength = '2100-12-31'
-				break
-			case 5:
-				validDateLength = '21000-12-31'
-				break
-			case 6:
-				validDateLength = '210000-12-31'
-				break
-		}
+		const validDateLength = `21${zeroAmount}-12-31`
 
 		return (
 			<div className={clsx(styles.form__wrapper, wrapperStyle)}>

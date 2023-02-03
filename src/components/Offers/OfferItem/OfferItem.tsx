@@ -6,23 +6,7 @@ import FormError from 'img/tsIcons/FormError'
 import { useAppDispatch } from 'hook'
 import { mainNextStep } from 'store/slices/mainStepSlice'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
-import { Dispatch, SetStateAction } from 'react'
-
-export interface IOfferItem {
-	requestedAmount: string
-	totalAmount: string
-	time: string
-	monthlyPayment: string
-	rate: string
-	isInsuranceEnabled: boolean
-	isSalaryClient: boolean
-	applicationId: number
-	applyOffer: (
-		setLoading: Dispatch<SetStateAction<boolean>>,
-		data: any
-	) => Promise<any>
-	setIsLoading: Dispatch<SetStateAction<boolean>>
-}
+import { IOfferItem } from './types'
 
 const OfferItem: React.FC<IOfferItem> = ({
 	applicationId,

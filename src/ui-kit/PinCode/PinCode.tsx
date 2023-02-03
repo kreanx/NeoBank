@@ -1,6 +1,5 @@
 import styles from './PinCode.module.scss'
-import { useState, useEffect } from 'react'
-import { Dispatch, SetStateAction } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
 interface IPinCode {
 	amount: number

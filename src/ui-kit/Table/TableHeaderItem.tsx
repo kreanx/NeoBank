@@ -7,6 +7,7 @@ const TableHeaderItem: React.FC<ITableHeader> = ({
 	sortingHandler,
 	styles,
 	item,
+	id,
 }) => {
 	const [isClicked, setIsClicked] = useState<boolean>(false)
 
@@ -14,15 +15,22 @@ const TableHeaderItem: React.FC<ITableHeader> = ({
 		setIsClicked((prev) => !prev)
 	}
 
+	const wordFixHandler = (word: string) => {
+		return word
+			.split(/(?!^)(?=[A-Z])/)
+			.map((item) => item.toUpperCase())
+			.join(' ')
+	}
+
 	return (
 		<th
 			className={styles.table__th}
 			onClick={() => {
-				sortingHandler(item.id)
+				sortingHandler(id)
 				clickHandler()
 			}}
 		>
-			{item.value}
+			{wordFixHandler(item)}
 			<div
 				className={clsx(styles.table__arrow, {
 					[styles.table__arrow_desc]: isClicked,

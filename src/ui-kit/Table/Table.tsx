@@ -15,6 +15,7 @@ const Table: React.FC<ITable> = ({ content, headers, sortingHandler }) => {
 									item={item}
 									sortingHandler={sortingHandler}
 									styles={styles}
+									id={i}
 								/>
 							)
 						})}

@@ -1,5 +1,4 @@
-import { SetStateAction } from 'react'
-import { Dispatch } from 'react'
+import { SetStateAction, Dispatch } from 'react'
 
 export const baseUrl = 'http://localhost:8080'
 

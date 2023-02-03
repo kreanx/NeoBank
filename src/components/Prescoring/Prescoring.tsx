@@ -2,7 +2,7 @@ import Container from 'ui-kit/Container/Container'
 import { Formik, Form } from 'formik'
 import styles from './Prescoring.module.scss'
 import { Button } from 'ui-kit/Button/Button'
-import { useState } from 'react'
+import { useState, SetStateAction, Dispatch } from 'react'
 import Loader from '../../ui-kit/Loader/Loader'
 import PrescoringField from '../../ui-kit/PrescoringField/PrescoringField'
 import prescoringContent from './Content'
@@ -11,8 +11,6 @@ import { applyPrescoringForm } from 'services/api/api'
 import { useAppDispatch } from 'hook'
 import { mainNextStep } from 'store/slices/mainStepSlice'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
-import { SetStateAction } from 'react'
-import { Dispatch } from 'react'
 
 export interface IPrescoring {
 	setStep: Dispatch<SetStateAction<number>>
@@ -45,7 +43,13 @@ const Prescoring: React.FC = () => {
 					passportNumber: '',
 				}}
 				onSubmit={async (values) => {
-					const newValues = { ...values, term: values.term.replace(/\D/g, '') }
+					const newValues = {
+						...values,
+						term: +values.term.replace(/\D/g, ''),
+						amount: +values.amount,
+						passportSeries: values.passportSeries.toString(),
+						passportNumber: values.passportNumber.toString(),
+					}
 					setIsLoading(true)
 
 					const data = await applyPrescoringForm(setIsLoading, newValues)

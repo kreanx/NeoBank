@@ -8,19 +8,16 @@ interface IContent {
 	debt: string
 	remaining: string
 }
-interface IHeaders {
-	value: string
-	id: string
-}
 
 export interface ITable {
 	content: IContent[]
-	headers: IHeaders[]
-	sortingHandler: Dispatch<SetStateAction<string>>
+	headers: string[]
+	sortingHandler: Dispatch<SetStateAction<number>>
 }
 
 export interface ITableHeader {
-	sortingHandler: Dispatch<SetStateAction<string>>
+	sortingHandler: Dispatch<SetStateAction<number>>
 	styles: { [className: string]: string }
-	item: IHeaders
+	item: string
+	id: number
 }

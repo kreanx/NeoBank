@@ -5,10 +5,11 @@ import { applyOffer } from 'services/api/api'
 import { useState, useEffect } from 'react'
 import Loader from 'ui-kit/Loader/Loader'
 import localStorageHandler from '../../services/localStorage/localStorageHandler'
+import { IOffer } from './OfferItem/types'
 
 const Offers: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
-	const [data, setData] = useState<any>()
+	const [data, setData] = useState<IOffer[]>()
 	useEffect(() => {
 		setData(JSON.parse(localStorageHandler('offers', 'get')))
 	}, [])

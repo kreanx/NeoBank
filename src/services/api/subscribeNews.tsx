@@ -1,5 +1,5 @@
-import { Dispatch } from 'react'
-import { SetStateAction } from 'react'
+import axios from 'axios'
+import { Dispatch, SetStateAction } from 'react'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
 import { baseUrl } from './types'
 
@@ -8,17 +8,10 @@ async function subscribeNews(
 	value: string,
 	setValue: Dispatch<SetStateAction<string>>
 ) {
-	await fetch(`${baseUrl}/email`, {
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		method: 'POST',
-		body: JSON.stringify({
-			email: value,
-		}),
-	})
+	await axios
+		.post(`${baseUrl}/email`, { email: value })
 		.then((response) => {
-			if (!response.ok) {
+			if (response.status > 300) {
 				return Promise.reject('Failed to send request!')
 			}
 		})

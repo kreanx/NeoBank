@@ -81,7 +81,7 @@ const TablePage: React.FC = () => {
 		return <NotFound />
 	}
 
-	if (mainState >= additionalStateId) {
+	if (mainState > additionalStateId) {
 		return (
 			<StepComplete
 				title="Documents are formed"

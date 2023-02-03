@@ -1,12 +1,25 @@
-import { useState } from 'react'
-import { tableDocumentContent, tableDocumentHeaders } from '../Content'
+import { useState, useEffect } from 'react'
+// import { tableDocumentHeaders } from '../Content'
 import Table from 'ui-kit/Table/Table'
+import { getApplicationStatus } from 'services/api/api'
+import { useParams } from 'react-router-dom'
 
 const TableDocument: React.FC = () => {
-	const [content, setContent] = useState(tableDocumentContent)
+	const [content, setContent] = useState([])
+	const [headers, setHeaders] = useState([])
 	const [order, setOrder] = useState<'ASC' | 'DESC'>('ASC')
+	const applicationId = useParams()
 
-	const sortingHandler = (col: string) => {
+	useEffect(() => {
+		async function getStatus() {
+			const data = await getApplicationStatus(applicationId.applicationId)
+			setContent(data?.credit.paymentSchedule)
+			setHeaders(Object.keys(data?.credit.paymentSchedule[0]))
+		}
+		getStatus()
+	}, [])
+
+	const sortingHandler = (col: number) => {
 		if (order === 'ASC') {
 			const sorted = [...content].sort((a, b) => (+a[col] > +b[col] ? 1 : -1))
 			setContent(sorted)
@@ -22,7 +35,7 @@ const TableDocument: React.FC = () => {
 	return (
 		<Table
 			content={content}
-			headers={tableDocumentHeaders}
+			headers={headers}
 			sortingHandler={sortingHandler}
 		/>
 	)
