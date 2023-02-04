@@ -70,8 +70,6 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 
 		const validDateLength = `21${zeroAmount}-12-31`
 
-		console.log(validDateLength, maxLength, zeroAmount)
-
 		return (
 			<div className={clsx(styles.form__wrapper, wrapperStyle)}>
 				<label htmlFor={name} className={styles.form__label}>

@@ -52,7 +52,9 @@ const ScoringForm: React.FC = () => {
 			maritalStatus: values.maritalStatus,
 			dependentAmount: +values.dependentAmount,
 			passportIssueDate: values.passportIssueDate,
-			passportIssueBranch: values.passportIssueBranch,
+			passportIssueBranch: values.passportIssueBranch
+				.toString()
+				.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + '-'),
 			employment: {
 				employmentStatus: values.employmentStatus,
 				employerINN: values.employerINN.toString(),
