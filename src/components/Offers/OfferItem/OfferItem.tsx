@@ -7,6 +7,7 @@ import { useAppDispatch } from 'hook'
 import { mainNextStep } from 'store/slices/mainStepSlice'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
 import { IOfferItem } from './types'
+import { regOnlyDigits } from 'services/regexp'
 
 const OfferItem: React.FC<IOfferItem> = ({
 	applicationId,
@@ -32,7 +33,7 @@ const OfferItem: React.FC<IOfferItem> = ({
 		const selectedOffer = {
 			applicationId,
 			rate,
-			term: time.replace(/\D/g, ''),
+			term: time.replace(regOnlyDigits, ''),
 			isInsuranceEnabled,
 			isSalaryClient,
 			monthlyPayment,

@@ -23,6 +23,7 @@
         "prettier"
     ],
     "rules": {
+        "no-duplicate-imports": "error",
         "linebreak-style": ["off", "windows"],
         "semi": 0,
         "no-tabs": "off",

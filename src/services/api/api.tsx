@@ -1,5 +1,7 @@
 import axios from 'axios'
+import { IOffer } from 'components/Offers/OfferItem/types'
 import { SetStateAction, Dispatch } from 'react'
+import { IgetApplicationStatus } from './types'
 
 const instance = axios.create({
 	baseURL: 'http://localhost:8080',
@@ -88,7 +90,7 @@ export async function applyDocuments(
 export async function applyPrescoringForm(
 	setIsLoading: Dispatch<SetStateAction<boolean>>,
 	data
-) {
+): Promise<IOffer> {
 	try {
 		const response = await instance
 			.post('application', data)
@@ -122,7 +124,10 @@ export async function applySign(
 		alert(`Failed to send request! ${error}`)
 	}
 }
-export async function getApplicationStatus(id: string | number) {
+
+export async function getApplicationStatus(
+	id: string | number
+): Promise<IgetApplicationStatus> {
 	try {
 		const response = await instance
 			.get(`admin/application/${id}`)

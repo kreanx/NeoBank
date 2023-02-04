@@ -25,6 +25,6 @@ export interface IOfferItem extends IOffer {
 	applyOffer: (
 		setLoading: Dispatch<SetStateAction<boolean>>,
 		data: ILocalOffer
-	) => Promise<any>
+	) => Promise<boolean>
 	setIsLoading: Dispatch<SetStateAction<boolean>>
 }

@@ -3,16 +3,16 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 
 interface IPinCode {
 	amount: number
-	validCode: string
 	isValid?: boolean
 	setIsValid?: Dispatch<SetStateAction<boolean>>
+	setCode?: Dispatch<SetStateAction<number>>
 }
 
 const PinCode: React.FC<IPinCode> = ({
 	amount,
-	validCode,
 	isValid,
 	setIsValid,
+	setCode,
 }) => {
 	const [pinCode, setPinCode] = useState<string[]>(new Array(amount).fill(''))
 
@@ -28,9 +28,8 @@ const PinCode: React.FC<IPinCode> = ({
 		})
 
 		if (checkPinCode.length === amount) {
-			if (pinCode.join('') === validCode) {
-				setIsValid(true)
-			} else setIsValid(false)
+			setCode(+checkPinCode.join(''))
+			setIsValid(true)
 		}
 	}, [pinCode])
 

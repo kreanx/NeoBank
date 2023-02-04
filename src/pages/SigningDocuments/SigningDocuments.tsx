@@ -3,16 +3,15 @@ import Container from 'ui-kit/Container/Container'
 import FileImg from 'img/tsIcons/FileImg'
 import { Checkbox } from 'ui-kit/Checkbox/Checkbox'
 import { Button } from 'ui-kit/Button/Button'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'hook'
 import NotFound from 'pages/NotFound/NotFound'
 import StepComplete from 'components/StepComplete/StepComplete'
 import Loader from 'ui-kit/Loader/Loader'
 import { applySign } from 'services/api/api'
 import { useParams } from 'react-router-dom'
-import { getApplicationStatus } from 'services/api/api'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
-import { mainDefaultStep, mainNextStep } from 'store/slices/mainStepSlice'
+import { mainNextStep } from 'store/slices/mainStepSlice'
 
 const SigningDocuments: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -23,21 +22,9 @@ const SigningDocuments: React.FC = () => {
 	const localId = JSON.parse(
 		localStorageHandler('application', 'get')
 	)?.applicationId
+	const pdfUrl = process.env.PUBLIC_URL + '/documents/credit-card-offer.pdf'
 
 	const additionalStateId = 4
-
-	useEffect(() => {
-		async function getStatus() {
-			let status = await getApplicationStatus(applicationId.applicationId)
-			status = status?.status
-
-			if (status === 'CC_DENIED' || status === 'CLIENT_DENIED') {
-				dispatch(mainDefaultStep())
-				localStorageHandler('application', 'remove')
-			}
-		}
-		getStatus()
-	}, [])
 
 	const agreeHandler = () => {
 		setIsAgree((prev) => !prev)
@@ -94,7 +81,7 @@ const SigningDocuments: React.FC = () => {
 							rel="noreferrer"
 							target="_blank"
 							className={styles.signing__information_pdf}
-							href="https://neowiki.neoflex.ru/download/attachments/102963612/credit-card-offer.pdf?version=1&modificationDate=1660918330000&api=v2"
+							href={pdfUrl}
 						>
 							<FileImg />
 

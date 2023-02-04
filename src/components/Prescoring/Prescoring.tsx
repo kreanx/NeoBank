@@ -11,7 +11,7 @@ import { applyPrescoringForm } from 'services/api/api'
 import { useAppDispatch } from 'hook'
 import { mainNextStep } from 'store/slices/mainStepSlice'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
-
+import { regOnlyDigits, regSpaceForCurrency } from 'services/regexp'
 export interface IPrescoring {
 	setStep: Dispatch<SetStateAction<number>>
 	setIsSended: Dispatch<SetStateAction<string>>
@@ -24,7 +24,7 @@ const Prescoring: React.FC = () => {
 
 	const amountHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setAmount(
-			e.currentTarget.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+			e.currentTarget.value.toString().replace(regSpaceForCurrency, ' ')
 		)
 	}
 
@@ -36,7 +36,7 @@ const Prescoring: React.FC = () => {
 					lastName: '',
 					firstName: '',
 					middleName: '',
-					term: '6 months',
+					term: '',
 					email: '',
 					birthdate: '',
 					passportSeries: '',
@@ -45,10 +45,11 @@ const Prescoring: React.FC = () => {
 				onSubmit={async (values) => {
 					const newValues = {
 						...values,
-						term: +values.term.replace(/\D/g, ''),
+						term: +values.term.replace(regOnlyDigits, ''),
 						amount: +values.amount,
 						passportSeries: values.passportSeries.toString(),
 						passportNumber: values.passportNumber.toString(),
+						middleName: values.middleName === '' ? null : values.middleName,
 					}
 					setIsLoading(true)
 

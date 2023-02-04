@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-// import { tableDocumentHeaders } from '../Content'
+import React, { useState, useEffect } from 'react'
 import Table from 'ui-kit/Table/Table'
 import { getApplicationStatus } from 'services/api/api'
 import { useParams } from 'react-router-dom'
@@ -41,4 +40,4 @@ const TableDocument: React.FC = () => {
 	)
 }
 
-export default TableDocument
+export default React.memo(TableDocument)

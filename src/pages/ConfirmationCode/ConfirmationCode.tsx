@@ -4,16 +4,15 @@ import { useAppDispatch, useAppSelector } from 'hook'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { applyCode } from 'services/api/api'
-import { getApplicationStatus } from 'services/api/api'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
-import { mainDefaultStep, mainNextStep } from 'store/slices/mainStepSlice'
+import { mainNextStep } from 'store/slices/mainStepSlice'
 import Container from 'ui-kit/Container/Container'
 import Loader from 'ui-kit/Loader/Loader'
 import PinCode from 'ui-kit/PinCode/PinCode'
 import styles from './ConfirmationCode.module.scss'
 
 const ConfirmationCode: React.FC = () => {
-	const [code, setCode] = useState<string>('0')
+	const [code, setCode] = useState<number>(0)
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const applicationId = useParams()
 	const dispatch = useAppDispatch()
@@ -26,21 +25,6 @@ const ConfirmationCode: React.FC = () => {
 	)?.applicationId
 
 	const additionalStateId = 5
-
-	useEffect(() => {
-		async function getStatus() {
-			const status = await getApplicationStatus(applicationId.applicationId)
-
-			if (status.status === 'CC_DENIED' || status.status === 'CLIENT_DENIED') {
-				dispatch(mainDefaultStep())
-				localStorageHandler('application', 'remove')
-				return
-			}
-
-			setCode(status.sesCode)
-		}
-		getStatus()
-	}, [])
 
 	useEffect(() => {
 		async function codeCheck() {
@@ -59,7 +43,7 @@ const ConfirmationCode: React.FC = () => {
 			}
 		}
 		codeCheck()
-	}, [isValid])
+	}, [code])
 
 	if (
 		mainState < additionalStateId ||
@@ -82,9 +66,9 @@ const ConfirmationCode: React.FC = () => {
 					<div className={styles.confirmation__otp}>
 						<PinCode
 							amount={codeLength}
-							validCode={code}
 							setIsValid={setIsValid}
 							isValid={isValid}
+							setCode={setCode}
 						/>
 					</div>
 				</div>

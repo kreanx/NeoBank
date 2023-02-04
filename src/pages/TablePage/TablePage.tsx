@@ -1,7 +1,7 @@
 import { Checkbox } from 'ui-kit/Checkbox/Checkbox'
 import Container from 'ui-kit/Container/Container'
 import styles from './TablePage.module.scss'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from 'ui-kit/Button/Button'
 import Modal from 'components/Modal/Modal'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -11,14 +11,13 @@ import { mainDefaultStep, mainNextStep } from 'store/slices/mainStepSlice'
 import NotFound from 'pages/NotFound/NotFound'
 import StepComplete from 'components/StepComplete/StepComplete'
 import Loader from 'ui-kit/Loader/Loader'
-import { applyDocuments } from 'services/api/api'
-import { getApplicationStatus } from 'services/api/api'
+import { applyDocuments, getApplicationStatus } from 'services/api/api'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
 import TableDocument from './TableDocument/TableDocument'
 
 const TablePage: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
-	const [schedule, setSchedule] = useState<boolean>(false)
+	const [isCheckboxActive, setIsCheckboxActive] = useState<boolean>(false)
 	const [isDeny, setIsDeny] = useState<boolean>(false)
 	const [isDenied, setIsDenied] = useState<boolean>(false)
 	const applicationId = useParams()
@@ -33,10 +32,9 @@ const TablePage: React.FC = () => {
 
 	useEffect(() => {
 		async function getStatus() {
-			let status = await getApplicationStatus(applicationId.applicationId)
-			status = status?.status
+			const status = await getApplicationStatus(applicationId.applicationId)
 
-			if (status === 'CC_DENIED' || status === 'CLIENT_DENIED') {
+			if (status?.status === 'CC_DENIED') {
 				dispatch(mainDefaultStep())
 				localStorageHandler('application', 'remove')
 			}
@@ -44,8 +42,8 @@ const TablePage: React.FC = () => {
 		getStatus()
 	}, [])
 
-	const scheduleHandler = () => {
-		setSchedule((prev) => !prev)
+	const checkBoxHandler = () => {
+		setIsCheckboxActive((prev) => !prev)
 	}
 
 	const denyHandler = () => {
@@ -131,18 +129,19 @@ const TablePage: React.FC = () => {
 								onClick={denyHandler}
 							/>
 							<Checkbox
-								checked={schedule}
+								checked={isCheckboxActive}
 								value={'schedule'}
-								onChange={scheduleHandler}
+								onChange={checkBoxHandler}
 								name={'schedule'}
 								label={'I agree with the payment schedule'}
 								customStyle={styles.table__checkbox}
 							/>
 							<Button
+								type="button"
 								label="Send"
 								customStyle={styles.table__submit}
 								onClick={apply}
-								disabled={!schedule}
+								disabled={!isCheckboxActive}
 							/>
 						</div>
 					</div>

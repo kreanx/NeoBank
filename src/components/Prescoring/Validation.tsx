@@ -37,5 +37,8 @@ export const PrescoringSchema = Yup.object().shape({
 	amount: Yup.number()
 		.min(15000, 'Minimum amount - 15 000!')
 		.max(600000, 'Maximum amount - 600 000!')
-		.typeError('Amount must be only in digits!'),
+		.typeError('Amount must be only in digits!')
+		.transform((value, originalValue) =>
+			/\s/.test(originalValue) ? NaN : value
+		),
 })

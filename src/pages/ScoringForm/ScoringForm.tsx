@@ -17,6 +17,7 @@ import StepComplete from 'components/StepComplete/StepComplete'
 import localStorageHandler from '../../services/localStorage/localStorageHandler'
 import { applyApplication } from 'services/api/api'
 import { mainNextStep } from 'store/slices/mainStepSlice'
+import { regSlashForPassport } from 'services/regexp'
 
 const ScoringForm: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -54,7 +55,7 @@ const ScoringForm: React.FC = () => {
 			passportIssueDate: values.passportIssueDate,
 			passportIssueBranch: values.passportIssueBranch
 				.toString()
-				.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + '-'),
+				.replace(regSlashForPassport, '$1' + '-'),
 			employment: {
 				employmentStatus: values.employmentStatus,
 				employerINN: values.employerINN.toString(),
