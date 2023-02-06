@@ -2,7 +2,7 @@ export const applicationIdBaseContent = [
 	{
 		label: 'Whats your gender',
 		name: 'gender',
-		options: ['MALE', 'FAMALE'],
+		options: ['MALE', 'FEMALE'],
 		required: true,
 	},
 	{
