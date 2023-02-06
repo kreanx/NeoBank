@@ -24,8 +24,10 @@ const StepComplete: React.FC<IStepComplete> = ({
 	const navigate = useNavigate()
 
 	useEffect(() => {
+		let timerId
+
 		if (isCheck) {
-			setTimeout(async () => {
+			timerId = setTimeout(async () => {
 				const status = await getApplicationStatus(applicationId.applicationId)
 				if (status?.status === 'CC_DENIED') {
 					dispatch(mainDefaultStep())
@@ -33,6 +35,10 @@ const StepComplete: React.FC<IStepComplete> = ({
 					navigate(routes.home)
 				}
 			}, 10000)
+		}
+
+		return () => {
+			clearTimeout(timerId)
 		}
 	}, [])
 
