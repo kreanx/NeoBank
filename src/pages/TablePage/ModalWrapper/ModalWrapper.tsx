@@ -1,6 +1,6 @@
 import Modal from 'components/Modal/Modal'
 
-interface Icontent {
+interface IContent {
 	title: string
 	text: string
 	firstButton: string
@@ -13,7 +13,7 @@ interface Icontent {
 interface IModalWrapper {
 	isDeny: boolean
 	isDenied: boolean
-	content: Icontent[]
+	content: IContent[]
 }
 
 const ModalWrapper: React.FC<IModalWrapper> = ({

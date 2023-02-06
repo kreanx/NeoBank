@@ -2,13 +2,13 @@ import { SetStateAction, Dispatch } from 'react'
 
 export const baseUrl = 'http://localhost:8080'
 
-export interface IsubscribeNews {
+export interface ISubscribeNews {
 	setSubscribe: Dispatch<SetStateAction<string>>
 	value: string
 	setValue: Dispatch<SetStateAction<string>>
 }
 
-export interface IgetApplicationStatus {
+export interface IGetApplicationStatus {
 	id: number
 	client: {
 		firstName: string

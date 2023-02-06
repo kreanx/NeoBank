@@ -1,6 +1,6 @@
-interface IcashbackContent {
+interface ICashbackContent {
 	title: string
 	text: string
 }
 
-export default IcashbackContent
+export default ICashbackContent

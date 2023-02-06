@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { IOffer } from 'components/Offers/OfferItem/types'
 import { SetStateAction, Dispatch } from 'react'
-import { IgetApplicationStatus } from './types'
+import { IGetApplicationStatus } from './types'
 
 const instance = axios.create({
-	baseURL: 'http://localhost:8080',
+	baseURL: `http://${process.env.REACT_APP_BANK_API_URL}`,
 	headers: {
 		'Content-Type': 'application/json',
 	},
@@ -127,7 +127,7 @@ export async function applySign(
 
 export async function getApplicationStatus(
 	id: string | number
-): Promise<IgetApplicationStatus> {
+): Promise<IGetApplicationStatus> {
 	try {
 		const response = await instance
 			.get(`admin/application/${id}`)
