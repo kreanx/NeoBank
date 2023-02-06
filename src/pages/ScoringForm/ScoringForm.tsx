@@ -43,6 +43,7 @@ const ScoringForm: React.FC = () => {
 			<StepComplete
 				title="Wait for a decision on the application"
 				subtitle="The answer will come to your mail within 10 minutes"
+				isCheck={true}
 			/>
 		)
 	}

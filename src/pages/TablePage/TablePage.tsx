@@ -1,9 +1,8 @@
 import { Checkbox } from 'ui-kit/Checkbox/Checkbox'
 import Container from 'ui-kit/Container/Container'
 import styles from './TablePage.module.scss'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Button } from 'ui-kit/Button/Button'
-import Modal from 'components/Modal/Modal'
 import { useNavigate, useParams } from 'react-router-dom'
 import { routes } from 'services/routes'
 import { useAppDispatch, useAppSelector } from 'hook'
@@ -11,9 +10,10 @@ import { mainDefaultStep, mainNextStep } from 'store/slices/mainStepSlice'
 import NotFound from 'pages/NotFound/NotFound'
 import StepComplete from 'components/StepComplete/StepComplete'
 import Loader from 'ui-kit/Loader/Loader'
-import { applyDocuments, getApplicationStatus } from 'services/api/api'
+import { applyDocuments } from 'services/api/api'
 import localStorageHandler from 'services/localStorage/localStorageHandler'
 import TableDocument from './TableDocument/TableDocument'
+import ModalWrapper from './ModalWrapper/ModalWrapper'
 
 const TablePage: React.FC = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -29,18 +29,6 @@ const TablePage: React.FC = () => {
 	)?.applicationId
 
 	const additionalStateId = 3
-
-	useEffect(() => {
-		async function getStatus() {
-			const status = await getApplicationStatus(applicationId.applicationId)
-
-			if (status?.status === 'CC_DENIED') {
-				dispatch(mainDefaultStep())
-				localStorageHandler('application', 'remove')
-			}
-		}
-		getStatus()
-	}, [])
 
 	const checkBoxHandler = () => {
 		setIsCheckboxActive((prev) => !prev)
@@ -88,32 +76,28 @@ const TablePage: React.FC = () => {
 		)
 	}
 
+	const content = [
+		{
+			title: 'Deny application',
+			text: 'You exactly sure, you want to cancel this application?',
+			firstButton: 'Cancel',
+			secondButton: 'Deny',
+			firstButtonHandler: cancelHandler,
+			secondButtonHandler: sureDenyHandler,
+			closeHandler: cancelHandler,
+		},
+		{
+			title: 'Deny application',
+			text: 'Your application has been deny!',
+			firstButton: 'Go home',
+			firstButtonHandler: deniedConfirm,
+			closeHandler: deniedConfirm,
+		},
+	]
+
 	return (
 		<>
-			{isDeny ? (
-				<Modal
-					title={'Deny application'}
-					text={'You exactly sure, you want to cancel this application?'}
-					firstButton={'Cancel'}
-					secondButton={'Deny'}
-					firstBtnHandler={cancelHandler}
-					secondBtnHandler={sureDenyHandler}
-					closeHandler={cancelHandler}
-				/>
-			) : (
-				<></>
-			)}
-			{isDenied ? (
-				<Modal
-					title={'Deny application'}
-					text={'Your application has been deny!'}
-					firstButton={'Go home'}
-					firstBtnHandler={deniedConfirm}
-					closeHandler={deniedConfirm}
-				/>
-			) : (
-				<></>
-			)}
+			<ModalWrapper isDeny={isDeny} isDenied={isDenied} content={content} />
 			<div className={styles.table}>
 				<Container>
 					<div className={styles.table__wrapper}>
