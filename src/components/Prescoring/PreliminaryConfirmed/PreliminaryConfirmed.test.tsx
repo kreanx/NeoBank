@@ -3,7 +3,7 @@ import PreliminaryConfirmed from './PreliminaryConfirmed'
 import '@testing-library/jest-dom/extend-expect'
 
 describe('PreliminaryConfirmed', () => {
-	test('renders with correct text', () => {
+	it('renders with correct text', () => {
 		render(<PreliminaryConfirmed />)
 		const title = screen.getByText(
 			/The preliminary decision has been sent to your email./

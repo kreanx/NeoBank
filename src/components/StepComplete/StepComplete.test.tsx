@@ -6,7 +6,7 @@ import StepComplete from './StepComplete'
 import '@testing-library/jest-dom/extend-expect'
 
 describe('StepComplete', () => {
-	test('renders title and subtitle', () => {
+	it('renders title and subtitle', () => {
 		const title = 'Step Complete'
 		const subtitle = 'The step is now complete.'
 		render(

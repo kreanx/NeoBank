@@ -4,13 +4,13 @@ import '@testing-library/jest-dom/extend-expect'
 import ratesContent from './Content'
 
 describe('Rates', () => {
-	test('renders all content blocks', () => {
+	it('renders all content blocks', () => {
 		render(<Rates />)
 		const contentBlocks = screen.getAllByTestId('content-block')
 		expect(contentBlocks).toHaveLength(6)
 	})
 
-	test('renders correct title and description for each content block', () => {
+	it('renders correct title and description for each content block', () => {
 		render(<Rates />)
 		const contentBlockTitles = screen.getAllByTestId('content-block-title')
 		const contentBlockDescriptions = screen.getAllByTestId(
