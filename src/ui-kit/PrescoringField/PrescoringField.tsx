@@ -22,9 +22,15 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 	isDate,
 	customHandler,
 	wrapperStyle,
+	setFieldValue,
+	isCurrency,
 }) => {
 	let ScoringField
 	let ErrorsField
+
+	function formatCurrency(value: number) {
+		return new Intl.NumberFormat('ru-RU').format(value).toString()
+	}
 
 	if (!options && !isDate) {
 		ScoringField = (
@@ -32,17 +38,22 @@ const PrescoringField: React.FC<IPrescoringField> = ({
 				name={name}
 				id={name}
 				placeholder={placeHolder}
-				type={isOnlyDigits ? 'number' : 'text'}
-				value={values[name]}
+				type={isCurrency ? 'text' : isOnlyDigits ? 'number' : 'text'}
+				value={isCurrency ? formatCurrency(values[name]) : values[name]}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+					const value = e.target.value.replace(/[^\d]/g, '')
 					maxLengthHandler(e, maxLength)
-					handleChange(e)
+					if (isCurrency) {
+						setFieldValue(name, value)
+					} else {
+						handleChange(e)
+					}
 					if (customHandler) {
-						customHandler(e)
+						customHandler(value)
 					}
 				}}
 				onBlur={handleBlur}
-				maxLength={maxLength}
+				maxLength={maxLength ? maxLength + 1 : 10}
 				className={clsx(styles.form__input, {
 					[styles.form__input_error]: errors[name] && touched[name],
 				})}

@@ -55,6 +55,7 @@ export const applicationIdEmploymentContent = [
 		placeHolder: 'For example 100 000',
 		required: true,
 		isOnlyDigits: true,
+		isCurrency: true,
 	},
 	{
 		label: 'Your position',

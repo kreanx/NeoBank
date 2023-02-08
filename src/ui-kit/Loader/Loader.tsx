@@ -7,6 +7,7 @@ interface ILoader {
 const Loader: React.FC<ILoader> = ({ fullsize }) => {
 	return (
 		<div
+			data-testid="loader"
 			className={clsx(styles.loader, {
 				[styles.loader__fullsize]: fullsize === true,
 			})}

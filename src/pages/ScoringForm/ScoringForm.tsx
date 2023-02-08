@@ -101,8 +101,13 @@ const ScoringForm: React.FC = () => {
 						validationSchema={ApplicationSchema}
 					>
 						{(props) => {
-							const { isSubmitting, handleChange, handleBlur, handleSubmit } =
-								props
+							const {
+								isSubmitting,
+								handleChange,
+								handleBlur,
+								handleSubmit,
+								setFieldValue,
+							} = props
 							return (
 								<div id="scroll">
 									<Container>
@@ -160,6 +165,8 @@ const ScoringForm: React.FC = () => {
 															wrapperStyle={
 																styles.applicationId__inputsBottom_wrapperBottom
 															}
+															isCurrency={item.isCurrency}
+															setFieldValue={setFieldValue}
 														/>
 													)
 												})}

@@ -25,6 +25,7 @@ const SliderArrow: React.FC<ISliderArrow> = ({
 }) => {
 	return (
 		<button
+			data-testid="slider-arrow"
 			className={customStyle}
 			onClick={() => scrollHandler(element, amount, direction)}
 			ref={refer}

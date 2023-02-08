@@ -25,6 +25,7 @@ const Modal: React.FC<IModal> = ({
 				<div className={styles.modal__top}>
 					<h3 className={styles.modal__title}>{title}</h3>
 					<svg
+						data-testid="close-icon"
 						width="24"
 						height="24"
 						viewBox="0 0 24 24"

@@ -4,7 +4,7 @@ import { ITable } from './types'
 
 const Table: React.FC<ITable> = ({ content, headers, sortingHandler }) => {
 	return (
-		<div className={styles.table}>
+		<div className={styles.table} data-testid="table">
 			<table className={styles.table__table}>
 				<thead className={styles.table__thead}>
 					<tr className={styles.table__tr}>
@@ -24,7 +24,7 @@ const Table: React.FC<ITable> = ({ content, headers, sortingHandler }) => {
 				<tbody>
 					{content.map((item, i) => {
 						return (
-							<tr className={styles.table__tr} key={i}>
+							<tr data-testid="row" className={styles.table__tr} key={i}>
 								{Object.values(item).map((el, j) => {
 									return (
 										<td key={j} className={styles.table__td}>

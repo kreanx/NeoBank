@@ -65,11 +65,12 @@ const PinCode: React.FC<IPinCode> = ({
 	}
 
 	return (
-		<div className={styles.PinCode}>
+		<div data-testid="pin-code" className={styles.PinCode}>
 			<div className={styles.PinCode__input}>
 				{pinCode.map((data, i) => {
 					return (
 						<input
+							data-testid="input-item"
 							key={i}
 							className={styles.PinCode__input_item}
 							name="PinCode"

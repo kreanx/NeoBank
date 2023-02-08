@@ -19,6 +19,7 @@ const Tooltip: React.FC<TTooltip> = ({
 
 	return (
 		<div
+			data-testid="tooltip"
 			className={styles.tooltip}
 			onMouseEnter={() => setActive(true)}
 			onMouseLeave={() => setActive(false)}

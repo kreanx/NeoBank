@@ -11,7 +11,11 @@ const AccordionItem: React.FC<TAccordionItem> = ({
 	index,
 }) => {
 	return (
-		<div className={styles.accordion} onClick={() => openHandler(index)}>
+		<div
+			data-testid="accordion-item"
+			className={styles.accordion}
+			onClick={() => openHandler(index)}
+		>
 			<div className={styles.accordion__text}>
 				<h2 className={styles.accordion__title}>{title}</h2>
 				<div
@@ -23,6 +27,7 @@ const AccordionItem: React.FC<TAccordionItem> = ({
 				</div>
 			</div>
 			<div
+				data-testid="accordion-content"
 				className={clsx(styles.accordion__content, {
 					[styles.accordion__content_active]: isOpen,
 				})}

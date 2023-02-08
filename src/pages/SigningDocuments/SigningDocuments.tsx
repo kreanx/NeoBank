@@ -82,6 +82,7 @@ const SigningDocuments: React.FC = () => {
 							target="_blank"
 							className={styles.signing__information_pdf}
 							href={pdfUrl}
+							data-testid="pdf-link"
 						>
 							<FileImg />
 

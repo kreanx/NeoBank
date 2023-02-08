@@ -1,5 +1,4 @@
 import { SetStateAction, Dispatch } from 'react'
-
 export interface ILocalOffer {
 	applicationId: number
 	rate: string

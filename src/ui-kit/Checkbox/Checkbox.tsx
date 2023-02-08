@@ -18,7 +18,10 @@ const Checkbox: React.FC<ICheckbox> = ({
 	customStyle,
 }) => {
 	return (
-		<label className={clsx(styles.checkbox__label, customStyle)}>
+		<label
+			data-testid="custom-style"
+			className={clsx(styles.checkbox__label, customStyle)}
+		>
 			<input
 				type="checkbox"
 				name={name}
@@ -28,6 +31,7 @@ const Checkbox: React.FC<ICheckbox> = ({
 				className={styles.checkbox__input}
 			/>
 			<div
+				data-testid="checked"
 				className={clsx(styles.checkbox__checkmark, {
 					[styles.checked]: checked,
 				})}

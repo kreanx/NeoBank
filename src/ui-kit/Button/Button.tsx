@@ -19,6 +19,7 @@ const Button: React.FC<IButton> = ({
 }) => {
 	return (
 		<button
+			data-testid="button"
 			type={type}
 			disabled={disabled}
 			className={clsx(styles.button, customStyle)}

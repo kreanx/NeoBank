@@ -6,17 +6,17 @@ import featuresContent from './Content'
 
 const Features: React.FC = () => {
 	return (
-		<section className={styles.features}>
+		<section className={styles.features} data-testid="features">
 			<Container>
 				<div className={styles.features__wrapper}>
 					<div className={styles.features__img}>
 						<img src={Illustration} alt="illustration" />
 					</div>
 					<div className={styles.features__textblock}>
-						<h2 className={styles.features__title}>
+						<h2 data-testid="h2" className={styles.features__title}>
 							We&nbsp;Provide Many Features You Can Use
 						</h2>
-						<h3 className={styles.features__subtitle}>
+						<h3 data-testid="h3" className={styles.features__subtitle}>
 							You can explore the features that we&nbsp;provide with fun and
 							have their own functions each feature
 						</h3>

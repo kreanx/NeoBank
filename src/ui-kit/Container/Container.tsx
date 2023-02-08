@@ -4,7 +4,11 @@ export interface IContainer {
 }
 
 const Container: React.FC<IContainer> = ({ children }) => {
-	return <div className={styles.container}>{children}</div>
+	return (
+		<div data-testid="container" className={styles.container}>
+			{children}
+		</div>
+	)
 }
 
 export default Container

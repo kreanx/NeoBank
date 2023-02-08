@@ -36,4 +36,5 @@ export interface IPrescoringField
 	isOnlyDigits?: boolean
 	customHandler?: (e) => void
 	wrapperStyle?: { [className: string]: string }
+	isCurrency?: boolean
 }

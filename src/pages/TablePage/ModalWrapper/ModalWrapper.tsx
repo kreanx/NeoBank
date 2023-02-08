@@ -1,4 +1,4 @@
-import Modal from 'components/Modal/Modal'
+import Modal from 'ui-kit/Modal/Modal'
 
 interface IContent {
 	title: string

@@ -6,9 +6,23 @@ const Rates: React.FC = () => {
 		<div className={styles.rates}>
 			{ratesContent.map((item, i) => {
 				return (
-					<div key={i} className={styles.rates__block}>
-						<div className={styles.rates__block_title}>{item.title}</div>
-						<div className={styles.rates__block_description}>{item.text}</div>
+					<div
+						key={i}
+						className={styles.rates__block}
+						data-testid="content-block"
+					>
+						<div
+							data-testid="content-block-title"
+							className={styles.rates__block_title}
+						>
+							{item.title}
+						</div>
+						<div
+							data-testid="content-block-description"
+							className={styles.rates__block_description}
+						>
+							{item.text}
+						</div>
 					</div>
 				)
 			})}

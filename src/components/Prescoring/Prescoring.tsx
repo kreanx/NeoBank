@@ -22,10 +22,8 @@ const Prescoring: React.FC = () => {
 	const [amount, setAmount] = useState<string>('15000')
 	const dispatch = useAppDispatch()
 
-	const amountHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setAmount(
-			e.currentTarget.value.toString().replace(regSpaceForCurrency, ' ')
-		)
+	const amountHandler = (value: string) => {
+		setAmount(value.replace(regSpaceForCurrency, ' '))
 	}
 
 	return (
@@ -63,7 +61,13 @@ const Prescoring: React.FC = () => {
 				validationSchema={PrescoringSchema}
 			>
 				{(props) => {
-					const { isSubmitting, handleChange, handleBlur, handleSubmit } = props
+					const {
+						isSubmitting,
+						handleChange,
+						handleBlur,
+						handleSubmit,
+						setFieldValue,
+					} = props
 					return (
 						<div id="scroll">
 							<Container>
@@ -87,6 +91,8 @@ const Prescoring: React.FC = () => {
 												isOnlyDigits={true}
 												maxLength={6}
 												customHandler={amountHandler}
+												isCurrency={true}
+												setFieldValue={setFieldValue}
 											/>
 										</div>
 										<div className={styles.form__divider}></div>
