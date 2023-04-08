@@ -1,0 +1,112 @@
+@import '../../global/global.scss';
+
+.features {
+    margin-top: 110px;
+
+    @include desktop {
+        margin-top: 60px;
+    }
+
+
+    &__wrapper {
+        display: flex;
+        gap: 73px;
+
+        @include smallDesktop {
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+    }
+
+    &__img {
+        max-width: 510px;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__textblock {
+        margin: 80px 0 0;
+
+        @include smallDesktop {
+            margin: 0;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: var(--fw_500);
+        font-size: var(--fz_35);
+        line-height: var(--lh_50);
+        color: var(--features_black);
+
+        @include desktop {
+            font-size: var(--fz_35_m13);
+            line-height: var(--lh_50_m13);
+        }
+
+        @include desktop {
+            font-size: var(--fz_35_m92);
+            line-height: var(--lh_50_m92);
+        }
+    }
+
+    &__subtitle {
+        margin: 20px 0 0;
+        font-weight: var(--fw_400);
+        font-size: var(--fz_16);
+        line-height: var(--lh_30);
+        color: var(--grey);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+            line-height: var(--lh_30_13);
+        }
+
+        @include desktop {
+            font-size: var(--fz_16_m92);
+            line-height: var(--lh_30_92);
+        }
+    }
+
+    &__list {
+        margin: 25px 0 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        @include desktop {
+            gap: 8px;
+        }
+
+        &_item {
+            font-weight: var(--fw_400);
+            font-size: var(--fz_14);
+            line-height: var(--lh_30);
+            color: var(--grey);
+
+            @include desktop {
+                font-size: var(--fz_14_m13);
+                line-height: var(--lh_30_m13);
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_14_m92);
+                line-height: var(--lh_30_m92);
+            }
+        }
+
+        &_block {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+    }
+}

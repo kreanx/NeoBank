@@ -1,0 +1,43 @@
+@import '../../global/global.scss';
+
+.button {
+    font-weight: var(--fw_700);
+    font-size: var(--fz_16);
+    line-height: var(--lh_112);
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    background-color: var(--blue_light);
+    border: none;
+    border-color: var(--blue_light);
+    border-radius: 16px;
+    padding: 16px;
+    color: var(--white);
+    cursor: pointer;
+    transition: 0.2s ease-in-out all;
+
+    @include desktop {
+        font-size: var(--fz_16_m13);
+        padding: 14px;
+    }
+
+    @include smallDesktop {
+        font-size: var(--fz_16_m92);
+        padding: 12px;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &:disabled {
+        background-color: var(--btn_disabled);
+        border: var(--btn_disabled);
+        outline: none;
+        cursor: auto;
+
+        &:hover {
+            transform: scale(1);
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "src",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "paths": {
+      "components/*": ["./components/*"],
+      "home/*": ["./pages/Home/*"],
+      "loan/*": ["./pages/Loan/*"],
+      "services/*": ["./services/*"],
+      "ui-kit/*": ["./ui-kit/*"],
+      "global/*": ["./global/*"],
+      "img/*": ["./img/*"],
+      "mocks/*": ["./mocks/*"],
+    },
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src", "declaration.d.ts"
+, "garabage/getApplicationStatus.tsx"  ]
+}

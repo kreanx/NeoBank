@@ -1,0 +1,25 @@
+@import '../../global/global.scss';
+
+.faq {
+    margin-top: 32px;
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_30);
+        line-height: 147.4%;
+        color: var(--black_exchange);
+        margin-bottom: 32px;
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+        }
+
+        @include tablet {
+            font-size: var(--fz_30_m500);
+        }
+    }
+
+    &__block {
+        margin-top: 32px;
+    }
+}

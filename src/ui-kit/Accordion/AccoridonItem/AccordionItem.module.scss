@@ -1,0 +1,72 @@
+@import '../../../global/global.scss';
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: 1px solid #E2E8F0;
+    padding: 32px;
+    user-select: none;
+
+
+    @include smallDesktop {
+        padding: 20px;
+    }
+
+    &__icon {
+        margin-right: 20px;
+        transition: .3s all;
+
+        &_active {
+            transition: .3s all;
+            transform: rotate(180deg);
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: 147.4%;
+        color: var(--black_title);
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+        }
+
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: .3s all;
+        font-weight: var(--fw_400);
+        font-size: var(--fz_16);
+        line-height: 147.4%;
+        color: var(--tabs_items);
+        margin-top: 0;
+        opacity: 0;
+
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+        }
+
+        &_active {
+            max-height: 50px;
+            transition: .3s all;
+            margin-top: 48px;
+            opacity: 1;
+
+            @include smallDesktop {
+                margin-top: 20px;
+
+            }
+        }
+    }
+}

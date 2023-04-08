@@ -1,0 +1,215 @@
+@import '../../global/global.scss';
+
+.news {
+    margin-top: 45px;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__slider {
+
+        margin-top: 46px;
+        position: relative;
+        align-self: baseline;
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+
+        @include smallDesktop {
+            height: 360px;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        text-align: center;
+        font-weight: var(--fw_500);
+        font-size: var(--fz_30);
+        line-height: var(--lh_50);
+        color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+            line-height: var(--lh_50_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+            line-height: var(--lh_50_m92);
+        }
+
+        @include tablet {}
+
+    }
+
+    &__link {
+        max-width: 320px;
+
+        @include smallDesktop {
+            max-width: 260px;
+        }
+    }
+
+    &__subtitle {
+        margin: 8px 0 0;
+        text-align: center;
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: var(--lh_50);
+        color: var(--grey_light);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+            line-height: var(--lh_50_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+            line-height: var(--lh_50_m92);
+        }
+    }
+
+    &__items {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 80px;
+        position: absolute;
+        transition: .4s all;
+        left: 0;
+
+        @include smallDesktop {
+            gap: 50px;
+        }
+    }
+
+    &__item {
+        padding: 32px;
+        background: var(--white);
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+        border-radius: 28px;
+        height: 390px;
+
+        @include desktop {
+            padding: 28px;
+            height: 350px;
+        }
+
+        @include smallDesktop {
+            padding: 20px;
+            height: 300px;
+        }
+
+        &_title {
+            text-align: center;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_20);
+            color: var(--black_exchange);
+            margin: 32px 0 0;
+            max-height: 105px;
+            overflow: hidden;
+
+            @include desktop {
+                font-size: var(--fz_20_m13);
+                margin-top: 28px;
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_20_m92);
+                margin-top: 20px;
+            }
+        }
+
+        &_img {
+            width: 256px;
+            height: 120px;
+            overflow: hidden;
+
+            @include smallDesktop {
+                width: 220px;
+            }
+        }
+
+        &_link {
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_16);
+            color: var(--black_exchange);
+
+            @include desktop {
+                font-size: var(--fz_16_m13);
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_16_m92);
+            }
+        }
+
+        &_text {
+            text-align: center;
+            margin: 32px 0 0;
+            max-height: 100px;
+            overflow: hidden;
+
+            @include desktop {
+                margin-top: 28px;
+            }
+
+            @include smallDesktop {
+                margin-top: 12px;
+            }
+        }
+    }
+
+
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+
+    &__arrows {
+        display: flex;
+        gap: 20px;
+        margin-left: auto;
+
+        &_prev,
+        &_next {
+            user-select: none;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            border-radius: 50px;
+            padding: 18px;
+            cursor: pointer;
+            background: var(--blue_light);
+            border: 1px solid var(--blue_light);
+            transition: .2s all;
+
+            &:disabled {
+                background: #FFFFFF;
+
+                svg path {
+                    stroke: var(--black_exchange);
+                }
+            }
+        }
+
+        &_prev {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.none {
+    visibility: hidden;
+    position: absolute;
+    top: -10000000px;
+    left: -200000px;
+}

@@ -1,0 +1,149 @@
+@import '../../global/global.scss';
+
+.form {
+    margin-top: 43px;
+    padding: 32px;
+    background: var(--white);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 28px;
+
+    &__btn {
+        padding: 16px 30px;
+        border-radius: 8px;
+    }
+
+    &__top {
+        display: flex;
+        width: 80%;
+
+        @include smallDesktop {
+            width: 100%;
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+
+    &__block {
+        display: flex;
+
+        &:nth-child(1),
+        &:nth-child(3) {
+            flex-direction: column;
+        }
+
+        &_text {
+            display: flex;
+            justify-content: space-between;
+            gap: 200px;
+            margin-bottom: 30px;
+            @include desktop {
+                gap: 70px;
+            }
+
+            @include smallDesktop {
+                gap: 30px;
+            }
+        }
+
+        &_input {
+            margin-top: 32px;
+        }
+    }
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_30);
+        line-height: 100%;
+        color: var(--black_exchange);
+
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+        }
+    }
+
+    &__subtitle {
+        font-weight: var(-fw_700);
+        font-size: var(--fz_20);
+        line-height: 100%;
+        color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_20_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_20_m92);
+        }
+    }
+
+    &__step {
+        margin-left: auto;
+    }
+
+    &__amount {
+        margin-top: 16px;
+    }
+
+    &__amount,
+    &__step {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: 100%;
+        color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+
+    }
+
+    &__divider {
+        margin: 0 40px;
+        border-left: 1px dashed rgba(128, 128, 128, 0.4);
+
+        @include smallDesktop {
+            display: none;
+        }
+    }
+
+    &__inputs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        margin-top: 24px;
+        gap: 16px;
+
+        &_title {
+            font-weight: var(--fw_700);
+            font-size: var(--fz_20);
+            color: var(--black_exchange);
+            margin-top: 32px;
+
+
+            @include desktop {
+                font-size: var(--fz_20_m13);
+            }
+
+            @include smallDesktop {
+                font-size: var(--fz_20_m92);
+            }
+
+        }
+    }
+}
+
+.btn {
+    display: flex;
+    justify-content: end;
+    margin-top: 24px;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}

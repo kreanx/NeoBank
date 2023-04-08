@@ -1,0 +1,132 @@
+@mixin headerXXL {
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 96px;
+}
+
+@mixin headerXL {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+@mixin headerL {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+@mixin headerM {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+@mixin headerS {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+@mixin headerXS {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+@mixin textM {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+@mixin textS {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin textXS {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@mixin controlL {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+@mixin controlM {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+@mixin captionM {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+@mixin captionS {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
+@mixin mheaderXL {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+@mixin mheaderL {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin mheaderS {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+@mixin mheaderXS {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@mixin mtextM {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin mtextS {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@mixin mtextXS {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+@mixin mcaptionM {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+@mixin mcaptionS {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}

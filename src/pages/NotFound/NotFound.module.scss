@@ -1,0 +1,86 @@
+@import 'global/global.scss';
+
+.notFound {
+    margin-top: 24px;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include smallDesktop {
+            justify-content: center;
+        }
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        @include desktop {
+            gap: 26px;
+        }
+
+    }
+
+    &__title {
+        font-weight: var(--fw_700);
+        font-size: var(--fz_30);
+        line-height: var(--lh_112);
+        color: var(--black_subtitle);
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+        }
+    }
+
+    &__subtitle {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_30);
+        line-height: var(--lh_112);
+        color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+        }
+    }
+
+    &__text {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: var(--lh_112);
+        color: var(--grey);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_16_m92);
+        }
+    }
+
+    &__button {
+        width: fit-content;
+        padding: 12px 60px;
+    }
+
+    &__img {
+        img {
+            width: 100%;
+
+            @include smallDesktop {
+                display: none;
+            }
+        }
+    }
+}

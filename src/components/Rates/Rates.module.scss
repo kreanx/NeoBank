@@ -1,0 +1,66 @@
+@import '../../global/global.scss';
+
+.rates {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @include smallDesktop {
+        padding: 0 15px;
+    }
+
+    &__block {
+        display: flex;
+        position: relative;
+        gap: 20px;
+
+        @include smallDesktop {
+            justify-content: space-between;
+        }
+
+        &::after {
+            content: '';
+            background: #7F92AC;
+            height: 1px;
+            width: 80%;
+            bottom: -24px;
+            position: absolute;
+            transform: rotate(180deg);
+
+            @include desktop {
+                width: 100%;
+            }
+        }
+
+        &:last-child {
+            &::after {
+                display: none;
+            }
+        }
+
+        &_title {
+            width: 25%;
+            font-weight: var(--fw_500);
+            font-size: var(--fz_16);
+            letter-spacing: 0.02em;
+            color: var(--black_exchange);
+
+            @include smallDesktop {
+                font-size: var(--fz_16_m92);
+            }
+        }
+
+        &_description {
+            font-weight: var(--fw_500);
+            font-size: var(--fz_16);
+            letter-spacing: 0.02em;
+            color: var(--tabs_rates);
+
+            @include smallDesktop {
+                font-size: var(--fz_16_m92);
+                align-self: flex-start;
+            }
+        }
+    }
+}

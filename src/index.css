@@ -1,0 +1,119 @@
+:root {
+  /* colors */
+
+  --white: #FFFFFF;
+  --blue_light: #003CFF;
+  --blue_dark: #686DF1;
+  --btn_disabled: #7796C0;
+  --green: #2FAB73;
+  --black_title: #1C1C1C;
+  --black_subtitle: #1C1C1E;
+  --black_navbar: #1D1929;
+  --black_exchange: #000000;
+  --grey: #4F5665;
+  --grey_currency: #808080;
+  --grey_input: #9092B0;
+  --grey_light: #2D3748;
+  --features_black: #0B132A;
+  --orange: #EB801D;
+  --bgcolor: #F5F4FF;
+  --logo: #B4387A;
+  --digital_grey: #3D3D3D;
+  --tabs_items: #7B7454;
+  --tabs_bg: #EAECEE;
+  --tabs_rates: #434343;
+  --howto: #D9D9D9;
+  --orange_form: #FF5631;
+  --grey_form: #1A202C;
+  --blue_form: #5B35D5;
+  --yellow_form: #F9F5E3;
+  --black_form: #1A202C;
+  --red_form: #FF0000;
+  --purple_form: #5B35D5;
+  --table: #E2E8F0;
+
+
+  /* text */
+  --fz_12: 12px;
+  --fz_14: 14px;
+  --fz_16: 16px;
+  --fz_20: 20px;
+  --fz_24: 24px;
+  --fz_30: 30px;
+  --fz_35: 35px;
+  --fz_48: 48px;
+
+
+  --lh_112: 112%;
+  --lh_30: 30px;
+  --lh_50: 50px;
+
+  --fw_400: 400;
+  --fw_500: 500;
+  --fw_600: 600;
+  --fw_700: 700;
+
+  /* media */
+  --fz_14_m13: 12px;
+  --fz_14_m92: 10px;
+  --fz_14_m500: 8px;
+
+  --fz_16_m13: 14px;
+  --fz_16_m92: 12px;
+  --fz_16_m500: 10px;
+
+  --fz_20_m13: 18px;
+  --fz_20_m92: 16px;
+  --fz_20_m500: 14px;
+
+  --fz_24_m13: 22px;
+  --fz_24_m92: 20px;
+  --fz_24_m500: 16px;
+
+  --fz_30_m13: 28px;
+  --fz_30_m92: 24px;
+  --fz_30_m500: 20px;
+
+  --fz_35_m13: 30px;
+  --fz_35_m92: 26px;
+  --fz_35_m500: 22px;
+
+  --fz_48_m13: 36px;
+  --fz_48_m92: 28px;
+  --fz_48_m500: 22px;
+
+  --lh_30_m13: 25px;
+  --lh_30_m92: 22px;
+  --lh_30_m500: 18px;
+
+  --lh_50_m13: 40px;
+  --lh_50_m92: 32px;
+  --lh_50_m500: 24px;
+
+  --lh_112_m92: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Ubuntu';
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bgcolor);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.container {
+  max-width: 1320px;
+  padding: 0px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}

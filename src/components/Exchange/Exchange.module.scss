@@ -1,0 +1,161 @@
+@import '../../global/global.scss';
+
+.exchange {
+    margin-top: 50px;
+
+    &__wrapper {
+        background: linear-gradient(358.2deg, rgba(178, 178, 178, 0.8) 8.06%, rgba(178, 178, 178, 0) 67.93%), rgba(244, 244, 244, 0.9);
+        mix-blend-mode: normal;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(187, 187, 187, 0.2);
+        border-radius: 28px;
+        display: flex;
+        justify-content: space-between;
+        padding: 32px;
+        gap: 30px;
+
+        @include tablet {
+            padding: 15px;
+            gap: 15px;
+        }
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+
+        &:nth-child(2) {
+            @include desktop {
+                width: 55%;
+            }
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: var(--fw_500);
+        font-size: var(--fz_30);
+        line-height: var(--lh_50);
+        color: var(--black_subtitle);
+
+        @include desktop {
+            font-size: var(--fz_30_m13);
+            line-height: var(--lh_50_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_30_m92);
+            line-height: var(--lh_50_m92);
+        }
+
+    }
+
+    &__subtitle {
+        margin: 24px 0 0;
+        font-weight: var(--fw_500);
+        font-size: var(--fz_20);
+        line-height: var(--lh_50);
+        color: var(--black_exchange);
+
+        @include desktop {
+            margin-top: 18px;
+            font-size: var(--fz_20_m13);
+            line-height: var(--lh_50_m13);
+        }
+
+        @include smallDesktop {
+            font-size: var(--fz_20_m92);
+            line-height: var(--lh_50_m92);
+        }
+    }
+
+    &__currency {
+        margin-top: 32px;
+        display: flex;
+        gap: 32px;
+        max-width: 65%;
+        flex-wrap: wrap;
+
+        @include desktop {
+            margin-top: 26px;
+        }
+
+        @include smallDesktop {
+            gap: 20px;
+        }
+
+        &_block {
+            display: flex;
+            align-items: center;
+            width: 100px;
+
+            &:nth-child(2) {
+                align-items: end;
+            }
+        }
+
+        &_text,
+        &_amount {
+            font-weight: var(--fw_700);
+            font-size: var(--fz_20);
+            line-height: var(--lh_112);
+
+            @include desktop {
+                font-size: var(--fz_20_m13);
+                line-height: var(--lh_112);
+            }
+
+        }
+
+        &_text,
+        &_amount,
+        &__link {
+            font-size: var(--fz_20_m92);
+            line-height: var(--lh_112_m92);
+        }
+
+        &_text {
+            color: var(--grey_currency);
+            mix-blend-mode: normal;
+        }
+
+        &_amount {
+            color: var(--black_exchange);
+        }
+    }
+
+    &__link {
+        margin-top: 51px;
+        display: inline-block;
+        font-weight: var(--fw_700);
+        font-size: var(--fz_20);
+        line-height: var(--lh_112);
+        text-decoration: none;
+        color: var(--white);
+
+        @include desktop {
+            margin-top: 40px;
+        }
+    }
+
+    &__update {
+        font-weight: var(--fw_500);
+        font-size: var(--fz_16);
+        line-height: var(--lh_50);
+        color: var(--black_exchange);
+
+        @include desktop {
+            font-size: var(--fz_16_m13);
+            line-height: var(--lh_50_m13);
+        }
+    }
+
+    &__img {
+        max-width: 120px;
+        margin-top: auto;
+
+        @include smallDesktop {
+            max-width: 90px;
+        }
+    }
+
+}

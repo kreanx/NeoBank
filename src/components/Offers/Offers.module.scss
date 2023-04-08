@@ -1,0 +1,17 @@
+@import 'global/global.scss';
+
+.offers {
+    margin-top: 48px;
+
+    &__wrapper {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @include smallDesktop {
+            gap: 30px;
+            justify-content: center;
+        }
+    }
+}
