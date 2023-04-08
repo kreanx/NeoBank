@@ -5,7 +5,7 @@ export async function getNews(render: (article?: IArticle) => void) {
 	try {
 		await axios
 			.get(
-				`https://ewsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+				`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
 			)
 			.then((response) => {
 				return response.data
